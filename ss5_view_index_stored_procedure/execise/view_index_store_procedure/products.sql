@@ -44,14 +44,24 @@ explain select product_code from products;
 
 -- Bước 4:
 -- Tạo view lấy về các thông tin: productCode, productName, productPrice, productStatus từ bảng products.
-create view v_products as
-select product_code, product_name, product_price, product_status 
-from products;
+create view v_products as 
+select 
+  product_code, 
+  product_name, 
+  product_price, 
+  product_status 
+from 
+  products;
 
 -- sửa view:
-create or replace view v_products as
-select product_name, product_price, product_status
-from products;
+create 
+or replace view v_products as 
+select 
+  product_name, 
+  product_price, 
+  product_status 
+from 
+  products;
 
 -- xóa view:
 
@@ -59,23 +69,65 @@ drop view v_products;
 
 -- Bước 5:
 -- Tạo store procedure lấy tất cả thông tin của tất cả các sản phẩm trong bảng product
-delimiter //
-create procedure sp_product()
-begin
-select *
-from products;
-end //
-delimiter ;
+delimiter // create procedure sp_product() begin 
+select 
+  * 
+from 
+  products;
+end // delimiter;
+
 call sp_product();
 
 -- Tạo store procedure thêm một sản phẩm mới
-delimiter //
-create procedure add_product (in p_id int, in p_product_code varchar(50), in p_product_name varchar(50), in p_product_price double, in p_product_amount int, in p_product_description longtext, in p_product_status varchar(50))
-begin
-insert into products 
-value (p_id, p_product_code, p_product_name, p_product_price, p_product_amount, p_product_description, p_product_status);
-end //
-delimiter ;
+delimiter // create procedure add_product (
+  in p_id int, 
+  in p_product_code varchar(50), 
+  in p_product_name varchar(50), 
+  in p_product_price double, 
+  in p_product_amount int, 
+  in p_product_description longtext, 
+  in p_product_status varchar(50)
+) begin insert into products value (
+  p_id, p_product_code, p_product_name, 
+  p_product_price, p_product_amount, 
+  p_product_description, p_product_status
+);
+end // delimiter;
 
 call add_product(6, "sp006","Bánh Quy", "50000", 6, "ăn liền", "tồn kho");
 
+-- Tạo store procedure sửa thông tin sản phẩm theo id
+
+delimiter // create procedure edit_product(
+  in p_id int, 
+  in p_product_code varchar(50), 
+  in p_product_name varchar(50), 
+  in p_product_price double, 
+  in p_product_amount int, 
+  in p_product_description longtext, 
+  in p_product_status varchar(50)
+) begin 
+update 
+  products 
+set 
+  products.product_code = p_product_code, 
+  products.product_name = p_product_name, 
+  products.product_price = p_product_price, 
+  products.product_amount = p_product_amount, 
+  products.product_description = p_product_description, 
+  products.product_status = p_product_status 
+where 
+  products.id = p_id;
+end // delimiter;
+
+call edit_product (6,"sp006","Bánh Quy",60000,7,"Oreo","đã bán");
+
+-- Tạo store procedure xoá sản phẩm theo id
+delimiter // create procedure delete_product(in p_id int) begin 
+delete from 
+  products 
+where 
+  products.id = p_id;
+end // delimiter;
+
+call delete_product(6);
