@@ -13,3 +13,11 @@ h5 {
 .bold {
     font-weight: bold;
 }
+
+* {
+    background-color: pink;
+}
+
+h1 {
+    font-family: Garamond;
+}
