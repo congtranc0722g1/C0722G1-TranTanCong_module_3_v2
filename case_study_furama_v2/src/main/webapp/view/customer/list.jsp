@@ -4,12 +4,12 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../../bootstrap-5.0.2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/customer_css.css">
+    <link rel="stylesheet" href="../../css/customer_css_v2.css">
 </head>
 <body>
 <div class="row header">
     <div class="col-lg-2">
-        <img class="icon" id="logo" src="/image/zyro-image%20(2).png" height="150" width="90"/>
+        <img class="icon" id="logo" src="/image/zyro-image%20(2).png" height="100" width="60"/>
     </div>
 
     <div class="col-lg-8">
