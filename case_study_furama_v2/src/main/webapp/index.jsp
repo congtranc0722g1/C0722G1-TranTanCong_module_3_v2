@@ -2,14 +2,13 @@
 <html>
 <head>
   <title>$Title$</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/furama_resort_css_v2.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/furama_resort_csss.css">
 </head>
 <body>
 <div class="row">
   <div class="col-lg-2">
-    <img id="logo" src="/image/zyro-image%20(2).png" height="100" width="60"/>
+    <img id="logo" src="image/zyro-image (2).png" height="100" width="60"/>
   </div>
 
   <div class="col-lg-8 headerss">
@@ -114,12 +113,12 @@
   </nav>
 </div>
 
-<div class="row left vh-100">
-  <div class="col-lg-3 overflow-scroll" style="height: 100%; padding-left: 0">
+<div class="row left">
+  <div class="col-lg-3 overflow-scroll" style="height: 500px; padding-left: 0">
     <div class="row">
       <div class="col-lg-12">
         <div class="card" style="width: 100%;">
-          <img src="/image/at.jpg" class="card-img-top" alt="...">
+          <img src="image/at.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">ẨM THỰC</h5>
             <p class="card-text">Trải nghiệm ẩm thực tại khu nghỉ dưỡng có sự pha trộn độc đáo các món ăn
@@ -132,7 +131,7 @@
       </div>
       <div class="col-lg-12">
         <div class="card" style="width: 100%;">
-          <img src="/image/gt.jpg" class="card-img-top" alt="...">
+          <img src="image/gt.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">GIẢI TRÍ</h5>
             <p class="card-text">Biến kỳ nghỉ năng động hơn bằng cách tham gia các hoạt động thể thao trên
@@ -144,7 +143,7 @@
       </div>
       <div class="col-lg-12">
         <div class="card" style="width: 100%;">
-          <img src="/image/sk.jpg" class="card-img-top" alt="...">
+          <img src="image/sk.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">SỰ KIỆN</h5>
             <p class="card-text">Cung hội nghị Quốc tế International Convention Place (ICP) với phòng Hội
@@ -162,13 +161,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="/image/Review-Furama-Resort-Da-Nang-13.jpg" height="100%" width=100%" class="d-block w-100" alt="...">
+          <img src="image/Review-Furama-Resort-Da-Nang-13.jpg" height="500px" width=100%" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="/image/anh2.jpg" height="100%" width=100%" class="d-block w-100" alt="...">
+          <img src="image/anh2.jpg" height="500px" width=100%" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="/image/anh3.jpg" width="100%" height="100%" class="d-block w-100" alt="...">
+          <img src="image/anh3.jpg" width="500px" height="100%" class="d-block w-100" alt="...">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -233,8 +232,6 @@
 <div class="row text-lg-center fs-4">
   <p>©2022 Furama Resort Danang</p>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
