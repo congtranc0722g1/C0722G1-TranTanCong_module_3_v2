@@ -1,0 +1,55 @@
+body{
+    background-color: #b6effb;
+}
+.top {
+    margin-top: 30px;
+}
+
+.icon {
+    box-sizing: border-box;
+    margin-left: 20px;
+}
+
+.header {
+    background-color: #badbcc;
+}
+
+.login {
+    margin-right: 7px;
+}
+
+.icon {
+    margin-left: 20px;
+}
+
+.margin {
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.main {
+    margin-left: 20px;
+}
+
+.list {
+    margin-left: 45px;
+    margin-right: 100px;
+}
+
+.edit-background {
+    /*background-color: #25cff2;*/
+}
+
+.width-form {
+    width: 50%;
+}
+
+.footer {
+    margin-top: 10px;
+}
+
+.margin-create-edit{
+    margin-left: 200px;
+    margin-right: 200px;
+}

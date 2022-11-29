@@ -3,8 +3,10 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../bootstrap-5.0.2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/customer_css.css">
+    <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../bootstrap520/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../datatables/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../../css/customer_v2.css">
 </head>
 <body>
 <div class="row header">
@@ -59,7 +61,7 @@
     </div>
 
     <div class="col-lg-3">
-        <a href="/customer">
+        <a href="/customer?action=add">
             <button class="btn btn-warning btn-outline-danger">Thêm mới khách hàng</button>
         </a>
     </div>
@@ -77,7 +79,9 @@
         </form>
     </div>
 </div>
-
+    <c:if test="${mess != null}">
+        <p style="color: brown; margin-left: 23px">${mess}</p>
+    </c:if>
 <div class="row margin">
     <table class="table table-striped table-bordered" id="tableCustomer" style="width: 100%">
         <thead>
@@ -99,16 +103,24 @@
         <c:forEach var="customer" items="${customerList}" varStatus="status">
             <tr class="align text-center">
                 <td>${status.count}</td>
-                <td>${customer.getCustomerTypeId()}</td>
+                <c:forEach var="ty" items="${customerTypeList}">
+                    <c:if test="${ty.id == customer.getCustomerTypeId()}">
+                        <td>${ty.name}</td>
+                    </c:if>
+                </c:forEach>
                 <td>${customer.getName()}</td>
                 <td>${customer.getDateOfBirth()}</td>
-                <td>${customer.isGender()}</td>
+                <c:if test="${customer.isGender()}">
+                    <td>Nam</td>
+                </c:if>
+                <c:if test="${!customer.isGender()}">
+                    <td>Nữ</td>
+                </c:if>
                 <td>${customer.getIdCard()}</td>
                 <td>${customer.getPhone()}</td>
                 <td>${customer.getEmail()}</td>
                 <td>${customer.getAddress()}</td>
                 <td>
-<%--                    <a href="https://chuanseoweb.com/" class="csw-btn-button" rel="nofollow" target="_blank" >Chỉnh sửa</a>--%>
                     <a class="btn btn-primary" style="width: 100px" href="/benh-an?action=edit&id=${customer.id}" role="button">Chỉnh Sửa</a>
                 </td>
                 <td><a>
@@ -127,11 +139,44 @@
 <div class="row text-lg-center fs-4 btn-secondary">
     <p>©2022 Furama Resort Danang</p>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa Khách Hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/customer?action=delete" method="post">
+                <div class="modal-body">
+                    <input type="text" hidden id="deleteId" name="id">
+                    <span>Bạn có muốn xóa khách hàng</span> <span style="color: red" id="deleteName"></span> <span>không ?</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
     function infoDelete(id, name) {
         document.getElementById("deleteId").value = id;
+        document.getElementById("deleteName").innerText = name;
     }
 </script>
-<script src="../../bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="../../bootstrap-5.1.3-dist/js/bootstrap.js"></script>
+<script src="../../jquery/jquery-3.5.1.min.js"></script>
+<script src="../../datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>$(document).ready(function () {
+    $('#tableCustomer').dataTable({
+        "dom": 'lrtip',
+        "lengthChange": false,
+        "pageLength": 5
+    });
+});
+</script>
 </body>
 </html>

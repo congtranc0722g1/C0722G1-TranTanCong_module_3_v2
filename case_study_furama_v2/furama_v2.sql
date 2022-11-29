@@ -45,4 +45,3 @@ facility_free text,
 foreign key(rent_type_id) references rent_type(id),
 foreign key(facility_type_id) references facility_type(id)
 );
-
