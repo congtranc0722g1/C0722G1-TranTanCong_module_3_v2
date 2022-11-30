@@ -121,7 +121,7 @@
                 <td>${customer.getEmail()}</td>
                 <td>${customer.getAddress()}</td>
                 <td>
-                    <a class="btn btn-primary" style="width: 100px" href="/benh-an?action=edit&id=${customer.id}" role="button">Chỉnh Sửa</a>
+                    <a class="btn btn-primary" style="width: 100px" href="/customer?action=edit&id=${customer.getId()}" role="button">Chỉnh Sửa</a>
                 </td>
                 <td><a>
                     <!-- Button trigger modal -->

@@ -21,7 +21,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public boolean update(Customer customer) {
-        return false;
+        return customerRepository.update(customer);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findById(int id) {
-        return null;
+        return customerRepository.findById(id);
     }
 }

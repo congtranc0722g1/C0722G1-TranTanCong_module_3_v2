@@ -52,6 +52,33 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int customerTypeId = Integer.parseInt(request.getParameter("customer-type-id"));
+        String name = request.getParameter("name");
+        LocalDate dateOfBirth = LocalDate.parse(request.getParameter("birthday"));
+        boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+        String idCard = request.getParameter("id-card");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        Customer customer = new Customer(id, customerTypeId, name, dateOfBirth, gender, idCard, phone, email, address);
+        boolean check = customerService.update(customer);
+        String mess = " Chỉnh sửa không thành công";
+        if (check) {
+            mess = "Chỉnh sửa thành công";
+        }
+        request.setAttribute("mess", mess);
+        List<CustomerType> customerTypeList = customerTypeService.finAll();
+        request.setAttribute("customerTypeList", customerTypeList);
+        Customer customers = customerService.findById(id);
+        request.setAttribute("customer", customers);
+        try {
+            request.getRequestDispatcher("view/customer/edit.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) {
@@ -122,6 +149,18 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showFormedit(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer customer = customerService.findById(id);
+        request.setAttribute("customer", customer);
+        List<CustomerType> customerTypeList = customerTypeService.finAll();
+        request.setAttribute("customerTypeList", customerTypeList);
+        try {
+            request.getRequestDispatcher("view/customer/edit.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showFormcreate(HttpServletRequest request, HttpServletResponse response) {

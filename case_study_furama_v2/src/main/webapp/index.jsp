@@ -96,7 +96,7 @@
                      href="/customer">Quản
                 lý khách hàng</a></li>
               <li><a class="dropdown-item"
-                     href="http://localhost:63342/module3/case_study_moudule_3_web/service/service.html?_ijt=4sjur7198m01acdcc8rjin5c3c">Quản
+                     href="/facility">Quản
                 lý dịch vụ</a></li>
               <li><a class="dropdown-item"
                      href="http://localhost:63342/module3/case_study_moudule_3_web/contract/contract.html?_ijt=4sjur7198m01acdcc8rjin5c3c">Quản
