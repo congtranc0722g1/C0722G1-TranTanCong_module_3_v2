@@ -124,8 +124,18 @@
                 <td>${facility.getFacilityTypeId()}</td>
                 <td>${facility.getStandardRoom()}</td>
                 <td>${facility.getDescriptionOtherConvenience()}</td>
-                <td>${facility.getPoolArea()}</td>
-                <td>${facility.getNumbersOfFloors()}</td>
+                <c:if test="${facility.getPoolArea() <= 0}">
+                    <td></td>
+                </c:if>
+                <c:if test="${facility.getPoolArea() > 0}">
+                    <td>${facility.getPoolArea()}</td>
+                </c:if>
+                <c:if test="${facility.getNumbersOfFloors() <= 0}">
+                    <td></td>
+                </c:if>
+                <c:if test="${facility.getNumbersOfFloors() > 0}">
+                    <td>${facility.getNumbersOfFloors()}</td>
+                </c:if>
                 <td>${facility.getFacilityFree()}</td>
                 <td>
                     <a class="btn btn-primary" style="width: 100px" href="edit.html" role="button">Chỉnh Sửa</a>
