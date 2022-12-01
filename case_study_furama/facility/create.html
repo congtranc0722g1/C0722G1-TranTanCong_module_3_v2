@@ -45,7 +45,7 @@
 </div>
 <div>
     <h1 class="text-center text-danger">Thêm mới dịch vụ</h1>
-    <div class="row margin">
+    <div class="row margin-create-edit">
         <form>
             <div class="mb-3">
                 <label class="form-label">Loại Dịch Vụ</label>
@@ -64,23 +64,23 @@
 <script>
     let form1 = "<div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Mã dịch vụ</label>\n" +
-        "                <input type=\"text\" name=\"id\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"id\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Tên dịch vụ</label>\n" +
-        "                <input type=\"text\" name=\"name\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"name\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Diện Tích</label>\n" +
-        "                <input type=\"text\" name=\"area\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"area\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Chi Phí Thuê</label>\n" +
-        "                <input type=\"text\" name=\"cost\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"cost\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Số Người Tối Đa</label>\n" +
-        "                <input type=\"text\" name=\"max-people\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"max-people\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Kiểu Thuê</label>\n" +
@@ -93,40 +93,40 @@
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Tiêu Chuẩn Phòng</label>\n" +
-        "                <input type=\"text\" name=\"standard-room\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"standard-room\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Mô Tả Nghi Khác</label>\n" +
-        "                <input type=\"text\" name=\"description-other-convenience\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"description-other-convenience\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Diện Tích Hồ Bơi</label>\n" +
-        "                <input type=\"text\" name=\"pool-area\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"pool-area\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Số Tầng</label>\n" +
-        "                <input type=\"text\" name=\"number-of-floors\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"number-of-floors\" class=\"form-control\">\n" +
         "            </div>";
 
     let form2 = "<div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Mã dịch vụ</label>\n" +
-        "                <input type=\"text\" name=\"id\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"id\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Tên dịch vụ</label>\n" +
-        "                <input type=\"text\" name=\"name\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"name\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Diện Tích</label>\n" +
-        "                <input type=\"text\" name=\"area\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"area\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Chi Phí Thuê</label>\n" +
-        "                <input type=\"text\" name=\"cost\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"cost\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Số Người Tối Đa</label>\n" +
-        "                <input type=\"text\" name=\"max-people\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"max-people\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Kiểu Thuê</label>\n" +
@@ -139,49 +139,48 @@
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Tiêu Chuẩn Phòng</label>\n" +
-        "                <input type=\"text\" name=\"standard-room\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"standard-room\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Mô Tả Nghi Khác</label>\n" +
-        "                <input type=\"text\" name=\"description-other-convenience\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"description-other-convenience\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Số Tầng</label>\n" +
-        "                <input type=\"text\" name=\"number-of-floors\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"number-of-floors\" class=\"form-control\">\n" +
         "            </div>";
 
     let form3 = "<div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Mã dịch vụ</label>\n" +
-        "                <input type=\"text\" name=\"id\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"id\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Tên dịch vụ</label>\n" +
-        "                <input type=\"text\" name=\"name\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"name\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Diện Tích</label>\n" +
-        "                <input type=\"text\" name=\"area\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"area\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Chi Phí Thuê</label>\n" +
-        "                <input type=\"text\" name=\"cost\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"cost\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Số Người Tối Đa</label>\n" +
-        "                <input type=\"text\" name=\"max-people\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"max-people\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Kiểu Thuê</label>\n" +
-        "                <select>\n" +
-        "                    <option>năm</option>\n" +
-        "                    <option>tháng</option>\n" +
-        "                    <option>ngày</option>\n" +
-        "                    <option>giờ</option>\n" +
+        "                <select name=\"rent-type\">\n" +
+        "                    <c:forEach var=\"rentType\" items=\"${rentTypeList}\">\n" +
+        "                        <option value=\"${rentType.getId()}\" selected>${rentType.getName()}</option>\n" +
+        "                    </c:forEach>\n" +
         "                </select>\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
         "                <label class=\"form-label\">Dịch Vụ Miễn Phí Đi Kèm</label>\n" +
-        "                <input type=\"text\" name=\"facility_free\" class=\"form-control width-form\">\n" +
+        "                <input type=\"text\" name=\"facility_free\" class=\"form-control\">\n" +
         "            </div>";
 
     document.getElementById("results").innerHTML = form1;
@@ -197,44 +196,45 @@
         }
     }
 </script>
-<!--    <div class="row margin">-->
-<!--        <form>-->
-<!--            <div class="mb-3">-->
-<!--                <label class="form-label">Mã dịch vụ</label>-->
-<!--                <input type="text" name="id" class="form-control width-form">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label class="form-label">Tên dịch vụ</label>-->
-<!--                <input type="text" name="name" class="form-control width-form">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label class="form-label">Diện Tích</label>-->
-<!--                <input type="text" name="area" class="form-control width-form">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label class="form-label">Chi Phí Thuê</label>-->
-<!--                <input type="text" name="cost" class="form-control width-form">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label class="form-label">Số Người Tối Đa</label>-->
-<!--                <input type="text" name="max-people" class="form-control width-form">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label class="form-label">Kiểu Thuê</label>-->
-<!--                <select>-->
-<!--                    <option>năm</option>-->
-<!--                    <option>tháng</option>-->
-<!--                    <option>ngày</option>-->
-<!--                    <option>giờ</option>-->
-<!--                </select>-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label class="form-label">Dịch Vụ Miễn Phí Đi Kèm</label>-->
-<!--                <input type="text" name="facility_free" class="form-control width-form">-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
+
+
+    <div class="row margin">
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Mã dịch vụ</label>
+                <input type="text" name="id" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tên dịch vụ</label>
+                <input type="text" name="name" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Diện Tích</label>
+                <input type="text" name="area" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Chi Phí Thuê</label>
+                <input type="text" name="cost" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Số Người Tối Đa</label>
+                <input type="text" name="max-people" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Kiểu Thuê</label>
+                <select name="rent-type">
+                    <c:forEach var="rentType" items="${rentTypeList}">
+                        <option value="${rentType.getId()}" selected>${rentType.getName()}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Dịch Vụ Miễn Phí Đi Kèm</label>
+                <input type="text" name="facility_free" class="form-control">
+            </div>
+        </form>
+    </div>
+</div>
 <div class="row text-lg-center fs-4 btn-secondary footer">
     <p>©2022 Furama Resort Danang</p>
 </div>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../../bootstrap520/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../datatables/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="../../css/facility_v2.css">
+    <link rel="stylesheet" href="../../css/facility_case.css">
 </head>
 <body>
 <div class="row header">
@@ -58,19 +58,19 @@
     </div>
     <div class="row main">
         <div class="col-lg-2">
-            <a href="list.html">
+            <a href="/facility">
                 <button class="btn btn-warning btn-outline-danger">Làm mới trang</button>
             </a>
         </div>
 
         <div class="col-lg-3">
-            <a href="../main_furama/furama.html">
+            <a href="/facility">
                 <button class="btn btn-warning btn-outline-danger">Quay lại trang chủ</button>
             </a>
         </div>
 
         <div class="col-lg-3">
-            <a href="create.html">
+            <a href="/facility?action=add">
                 <button class="btn btn-warning btn-outline-danger">Thêm mới dịch vụ</button>
             </a>
         </div>
@@ -120,8 +120,8 @@
                 <td>${facility.getArea()}</td>
                 <td>${facility.getCost()}</td>
                 <td>${facility.getMaxPeople()}</td>
-                <td>${facility.getRentTypeId()}</td>
-                <td>${facility.getFacilityTypeId()}</td>
+                <td>${facility.getRentType().getName()}</td>
+                <td>${facility.getFacilityType().getName()}</td>
                 <td>${facility.getStandardRoom()}</td>
                 <td>${facility.getDescriptionOtherConvenience()}</td>
                 <c:if test="${facility.getPoolArea() <= 0}">

@@ -42,10 +42,11 @@
     background-color: #25cff2;
 }
 
-.width-form {
-    width: 50%;
-}
-
 .footer {
     margin-top: 10px;
+}
+
+.margin-create-edit{
+    margin-left: 200px;
+    margin-right: 200px;
 }

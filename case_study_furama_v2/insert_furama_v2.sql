@@ -9,7 +9,7 @@ value(1,'Diamond'),
     
 insert into customer(id,
 `name`,date_of_birth,gender,id_card,phone_number,
-email,address,customer_type_id)VALUE
+email,address,customer_type_id)value
 (1,'Nguyễn Thị Hào','1970-11-07',0,'643431213',
 '0945423362','thihao07@gmail.com',
 '23 Nguyễn Hoàng, Đà Nẵng',5
@@ -51,6 +51,44 @@ email,address,customer_type_id)VALUE
 '22 Ngô Quyền, Đà Nẵng',2
 );
 
+insert into rent_type(id,`name`)
+value(1,"Năm"),
+(2,"Tháng"),
+(3,"Ngày"),
+(4,"Giờ");
+
+insert into facility_type(id,`name`)
+value(1,"Villa"),
+(2,"House"),
+(3,"Room");
+
+insert into facility(
+id,
+`name`,
+area,
+cost,
+max_people,
+standard_room,
+description_other_convenience,
+pool_area,
+numbers_of_floors,
+facility_free,
+rent_type_id,
+facility_type_id
+) value
+(1,"Villa Beach Front",25000,10000000,10,"vip",
+"Có hồ bơi",500,4,null,3,1),
+(2,"House Princess 01",14000,5000000,7,"vip",
+"Có thêm bếp nướng",null,3,null,2,2),
+(3,"Room Twin 01",5000,1000000,2,"normal",
+"Có tivi",null,null,"1 xe máy,1 xe đạp",4,3),
+(4,"Villa No Beach Front",22000,9000000,8,"normal",
+"Có hồ bơi",300,3,null,3,1),
+(5,"House Princess 02",10000,4000000,5,"normal",
+"Có thêm bếp nướng",null,2,null,3,2),
+(6,"Room Twin 02",3000,900000,2,"normal",
+"Có tivi",null,null,"1 xe máy",4,3);
+
 delimiter //
 create procedure delete_customer(in p_id int)
 begin
@@ -70,3 +108,7 @@ delimiter ;
 select * from customer;
 
 call update_customer(2, 1, "Trần Tấn ", "1999-10-20", 1, "909876546", "08888888888", "congtran@gmail.com", "Quảng Nam");
+
+select * from facility;
+
+select * from facility join rent_type on facility.rent_type_id = rent_type.id join facility_type on facility.facility_type_id = facility_type.id;

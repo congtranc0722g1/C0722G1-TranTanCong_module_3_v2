@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../../bootstrap520/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../datatables/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="../../css/customer_v2.css">
+    <link rel="stylesheet" href="../../css/customer_case.css">
 </head>
 <body>
 <div class="row header">

@@ -21,12 +21,12 @@ foreign key(customer_type_id) references customer_type(id)
 
 create table facility_type (
 id int primary key,
-`name` varchar(45)
+facility_type_name varchar(45)
 );
 
 create table rent_type(
 id int primary key,
-`name` varchar(45)
+rent_type_name varchar(45)
 );
 
 create table facility(
@@ -45,3 +45,7 @@ facility_free text,
 foreign key(rent_type_id) references rent_type(id),
 foreign key(facility_type_id) references facility_type(id)
 );
+
+drop table facility_type;
+drop table facility;
+drop table rent_type;

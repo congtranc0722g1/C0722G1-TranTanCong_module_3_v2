@@ -1,8 +1,14 @@
 package controller;
 
 import model.Facility;
+import model.FacilityType;
+import model.RentType;
 import service.IFacilityService;
+import service.IFacilityTypeService;
+import service.IRentTypeService;
 import service.impl.FacilityService;
+import service.impl.FacilityTypeService;
+import service.impl.RentTypeService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +21,8 @@ import java.util.List;
 @WebServlet(name = "FacilityServlet", urlPatterns = {"/facility"})
 public class FacilityServlet extends HttpServlet {
     private IFacilityService facilityService = new FacilityService();
+    private IRentTypeService rentTypeService = new RentTypeService();
+    private IFacilityTypeService facilityTypeService = new FacilityTypeService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -42,6 +50,36 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int area = Integer.parseInt(request.getParameter("area"));
+        double cost = Double.parseDouble(request.getParameter("cost"));
+        int maxPeople = Integer.parseInt(request.getParameter("max-people"));
+        int rentTypeId = Integer.parseInt(request.getParameter("rent-type"));
+        int facilityTypeId = Integer.parseInt(request.getParameter("facility-type"));
+        String standardRoom = request.getParameter("standard-room");
+        String descriptionOtherConvenience = request.getParameter("description-other-convenience");
+        double poolArea = Double.parseDouble(request.getParameter("pool-area"));
+        int numbersOfFloors = Integer.parseInt(request.getParameter("number-of-floors"));
+        String facilityFree = request.getParameter("facility_free");
+        Facility facility = new Facility(id, name, area, cost, maxPeople, rentTypeId, facilityTypeId, standardRoom, descriptionOtherConvenience, poolArea, numbersOfFloors, facilityFree);
+        boolean check = facilityService.add(facility);
+        String mess = "Thêm mới không thành công";
+        if (check) {
+            mess = "Thêm mới thành công";
+        }
+        request.setAttribute("mess", mess);
+        List<RentType> rentTypeList = rentTypeService.findAll();
+        request.setAttribute("rentTypeList", rentTypeList);
+        List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+        request.setAttribute("facilityTypeList", facilityTypeList);
+        try {
+            request.getRequestDispatcher("view/facility/create.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,6 +109,17 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void showFormcreate(HttpServletRequest request, HttpServletResponse response) {
+        List<RentType> rentTypeList = rentTypeService.findAll();
+        request.setAttribute("rentTypeList", rentTypeList);
+        List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+        request.setAttribute("facilityTypeList", facilityTypeList);
+        try {
+            request.getRequestDispatcher("view/facility/create.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showListFacility(HttpServletRequest request, HttpServletResponse response) {

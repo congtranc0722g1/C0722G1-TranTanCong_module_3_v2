@@ -5,7 +5,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/customer_v2.css">
+    <link rel="stylesheet" href="../../css/customer_case.css">
 </head>
 <body class="edit-background">
 <div class="row header">
