@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ProductService implements IProductService {
     private IProductReponsitory productReponsitory = new ProductReponsitory();
+
     @Override
     public List<Product> showAll() {
         return productReponsitory.showAll();
@@ -22,6 +23,11 @@ public class ProductService implements IProductService {
     @Override
     public Product searchById(int id) {
         return productReponsitory.searchById(id);
+    }
+
+    @Override
+    public void update(int id, Product product) {
+        productReponsitory.update(id, product);
     }
 
     @Override

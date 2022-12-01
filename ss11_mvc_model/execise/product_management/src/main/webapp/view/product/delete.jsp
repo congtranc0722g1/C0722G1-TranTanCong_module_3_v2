@@ -15,13 +15,13 @@
 <form method="post">
     <p>Mã Sản Phẩm</p>
     <input type="text" name="id" value="${product.getId()}" readonly>
-    <p>Nhập Tên Sản Phẩm</p>
+    <p>Tên Sản Phẩm</p>
     <input type="text" name="name" value="${product.getName()}" readonly>
-    <p>Nhập Giá Sản Phẩm</p>
+    <p>Giá Sản Phẩm</p>
     <input type="text" name="price" value="${product.getPrice()}" readonly>
-    <p>Nhập Mô Tả Sản Phẩm</p>
+    <p>Mô Tả Sản Phẩm</p>
     <input type="text" name="describe" value="${product.getPrice()}" readonly>
-    <p>Nhập Tên Công Ty</p>
+    <p>Tên Công Ty</p>
     <input type="text" name="company" value="${product.getCompany()}" readonly>
     <br>
     <br>

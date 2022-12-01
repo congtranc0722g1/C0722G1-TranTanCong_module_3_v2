@@ -11,5 +11,7 @@ public interface IProductReponsitory {
 
     Product searchById(int id);
 
+    void update(int id, Product product);
+
     void remove(int id);
 }

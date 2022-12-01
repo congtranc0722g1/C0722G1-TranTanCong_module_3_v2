@@ -19,6 +19,7 @@
         <th>Công Ty</th>
         <th>Chỉnh Sửa</th>
         <th>Xóa</th>
+        <th>Chi Tiết</th>
     </tr>
     <c:forEach var="product" items="${productList}" varStatus="status">
         <tr>
@@ -35,6 +36,11 @@
             <td>
                 <a href="/product?action=delete&id=${product.getId()}">
                     <button class="btn btn-warning">Xóa</button>
+                </a>
+            </td>
+            <td>
+                <a href="/product?action=details&id=${product.getId()}">
+                    <button class="btn btn-success">Chi tiết</button>
                 </a>
             </td>
         </tr>

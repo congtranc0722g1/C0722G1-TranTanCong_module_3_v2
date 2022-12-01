@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>Chỉnh Sửa Sản Phẩm</h1>
-<form action="/product?action=edit" method="post">
+<form method="post">
     <p>Nhập Tên Sản Phẩm</p>
     <input type="text" name="name" value="${product.getName()}">
     <p>Nhập Giá Sản Phẩm</p>

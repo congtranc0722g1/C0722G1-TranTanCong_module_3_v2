@@ -15,6 +15,7 @@ import java.util.List;
 @WebServlet(name = "ProductServlet", urlPatterns = {"/product"})
 public class ProductServlet extends HttpServlet {
     private IProductService productService = new ProductService();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -35,18 +36,45 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+    private void details(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.searchById(id);
+        request.setAttribute("product", product);
+        try {
+            request.getRequestDispatcher("view/product/details.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void update(HttpServletRequest request, HttpServletResponse response) {
-        String id = request.getParameter("id");
+        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         double price = Double.parseDouble(request.getParameter("price"));
         String describe = request.getParameter("describe");
         String company = request.getParameter("company");
+        Product product = productService.searchById(id);
+        product.setName(name);
+        product.setPrice(price);
+        product.setDescribe(describe);
+        product.setCompany(company);
+        productService.update(id, product);
+        request.setAttribute("product", product);
+        try {
+            request.getRequestDispatcher("view/product/edit.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         productService.remove(id);
-        showListProduct(request,response);
+        showListProduct(request, response);
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) {
@@ -57,7 +85,7 @@ public class ProductServlet extends HttpServlet {
         String company = request.getParameter("company");
         Product product = new Product(id, name, price, describe, company);
         productService.add(product);
-        showListProduct(request,response);
+        showListProduct(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -78,6 +106,9 @@ public class ProductServlet extends HttpServlet {
             case "delete":
                 showFormDelete(request, response);
                 break;
+            case "details":
+                details(request, response);
+                break;
             default:
                 showListProduct(request, response);
         }
@@ -88,7 +119,7 @@ public class ProductServlet extends HttpServlet {
         Product product = productService.searchById(id);
         request.setAttribute("product", product);
         try {
-            request.getRequestDispatcher("view/product/delete.jsp").forward(request,response);
+            request.getRequestDispatcher("view/product/delete.jsp").forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -98,7 +129,7 @@ public class ProductServlet extends HttpServlet {
 
     private void showFormcreate(HttpServletRequest request, HttpServletResponse response) {
         try {
-            request.getRequestDispatcher("view/product/create.jsp").forward(request,response);
+            request.getRequestDispatcher("view/product/create.jsp").forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
