@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Edit Product</title>
+    <title>Edit User</title>
 </head>
 <body>
 <h1>CHỈNH SỬA NGƯỜI DÙNG</h1>

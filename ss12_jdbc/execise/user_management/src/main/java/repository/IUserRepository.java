@@ -16,4 +16,6 @@ public interface IUserRepository {
     boolean delete(int id);
 
     List<User> search(String countrySearch);
+
+    List<User> sort();
 }

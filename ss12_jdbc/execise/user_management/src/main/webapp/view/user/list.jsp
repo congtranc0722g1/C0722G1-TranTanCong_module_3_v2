@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Product List</title>
+    <title>User List</title>
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
 </head>
 <body>
@@ -10,6 +10,9 @@
 <a href="/user?action=add">
     <button class="btn bg-primary">Thêm Mới Người Dùng</button>
 </a>
+<form action="/user?action=sort" method="post">
+    <button class="btn bg-primary" style="margin-top: 30px">Sắp Xếp</button>
+</form>
 <form action="/user" method="get" class="d-flex">
     <input value="${country}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập Quốc Gia"
            aria-label="Search" style="width: 150px" name="country">

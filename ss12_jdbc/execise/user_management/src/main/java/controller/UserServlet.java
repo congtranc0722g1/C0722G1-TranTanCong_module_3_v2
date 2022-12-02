@@ -30,8 +30,23 @@ public class UserServlet extends HttpServlet {
             case "delete":
                 delete(request, response);
                 break;
+            case "sort":
+                sort(request, response);
+                break;
             default:
                 showListUser(request, response);
+        }
+    }
+
+    private void sort(HttpServletRequest request, HttpServletResponse response) {
+        List<User> userList = userService.sort();
+        request.setAttribute("userList", userList);
+        try {
+            request.getRequestDispatcher("view/user/list.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

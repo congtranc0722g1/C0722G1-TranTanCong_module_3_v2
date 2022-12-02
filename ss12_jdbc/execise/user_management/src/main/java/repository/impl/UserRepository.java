@@ -18,6 +18,7 @@ public class UserRepository implements IUserRepository {
     private final String UPDATE_USER = "update user_v2 set `name` = ?, email = ?, country = ? where id = ?;";
     private final String DELETE_USER = "delete from user_v2 where id = ?;";
     private final String SEARCH_USER = "select * from user_v2 where country like ?;";
+    private final String SORT_USER = "select * from user_v2 order by name;";
 
     @Override
     public List<User> showAll() {
@@ -119,6 +120,27 @@ public class UserRepository implements IUserRepository {
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
                 String country = resultSet.getString("country");
+                User user = new User(id, name, email, country);
+                userList.add(user);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return userList;
+    }
+
+    @Override
+    public List<User> sort() {
+        Connection connection = BaseRepository.getConnectDB();
+        List<User> userList = new ArrayList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SORT_USER);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
                 User user = new User(id, name, email, country);
                 userList.add(user);
             }

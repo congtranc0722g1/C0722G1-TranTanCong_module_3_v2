@@ -39,4 +39,9 @@ public class UserService implements IUserService {
     public List<User> search(String countrySearch) {
         return userRepository.search(countrySearch);
     }
+
+    @Override
+    public List<User> sort() {
+        return userRepository.sort();
+    }
 }
