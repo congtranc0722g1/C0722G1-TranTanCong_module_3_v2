@@ -53,4 +53,15 @@ public class ProductReponsitory implements IProductReponsitory {
             }
         }
     }
+
+    @Override
+    public List<Product> search(String name) {
+        List<Product> productList1 = new ArrayList<>();
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getName().equals(name)) {
+                productList1.add(productList.get(i));
+            }
+        }
+        return productList1;
+    }
 }

@@ -1,15 +1,15 @@
 public class Calculator {
-    public static double calculate(double number1, char operator, double number2) {
+    public static double calculate(double firstNumber, char operator, double secondNumber) {
         switch (operator) {
             case '+':
-                return number1 + number2;
+                return firstNumber + secondNumber;
             case '-':
-                return number1 - number2;
+                return firstNumber - secondNumber;
             case '*':
-                return number1 * number2;
+                return firstNumber * secondNumber;
             case '/':
-                if (number2 != 0)
-                    return number1 / number2;
+                if (secondNumber != 0)
+                    return firstNumber / secondNumber;
                 else
                     throw new RuntimeException("Can't divide by zero");
             default:

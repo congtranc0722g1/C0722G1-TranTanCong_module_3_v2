@@ -152,6 +152,17 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        List<Product> productList = productService.search(name);
+        request.setAttribute("productList", productList);
+        request.setAttribute("name", name);
+        try {
+            request.getRequestDispatcher("view/product/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) {

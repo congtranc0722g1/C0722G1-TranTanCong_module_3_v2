@@ -8,11 +8,11 @@ public class CalculatorServlet extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        double num1 = Double.parseDouble(request.getParameter("number1"));
+        double firstNumber = Double.parseDouble(request.getParameter("first-number"));
         char operator = request.getParameter("operator").charAt(0);
-        double num2 = Double.parseDouble(request.getParameter("number2"));
+        double secondNumber = Double.parseDouble(request.getParameter("second-number"));
         try {
-            result = Calculator.calculate(num1, operator, num2);
+            result = Calculator.calculate(firstNumber, operator, secondNumber);
         } catch (RuntimeException e) {
             request.setAttribute("exception", e.getMessage());
         }

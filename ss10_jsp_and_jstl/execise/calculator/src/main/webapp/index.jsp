@@ -7,7 +7,7 @@
 <h1>Simple Calculator</h1>
 <form action="/calculator" method="get">
     <p>First Operand</p>
-    <input type="text" name="number1">
+    <input type="text" name="first-number">
     <p>Operator</p>
     <select name="operator">
         <option value="+">Addition</option>
@@ -16,7 +16,7 @@
         <option value="/">Divide</option>
     </select>
     <p>Second Operand</p>
-    <input type="text" name="number2"> <br><br>
+    <input type="text" name="second-number"> <br><br>
     <button type="submit">Calculate</button>
 </form>
 </body>
