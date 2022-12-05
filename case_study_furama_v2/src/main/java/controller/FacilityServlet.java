@@ -50,17 +50,22 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        Integer id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
-        int area = Integer.parseInt(request.getParameter("area"));
-        double cost = Double.parseDouble(request.getParameter("cost"));
-        int maxPeople = Integer.parseInt(request.getParameter("max-people"));
-        int rentTypeId = Integer.parseInt(request.getParameter("rent-type"));
-        int facilityTypeId = Integer.parseInt(request.getParameter("facility-type"));
+        Integer area = Integer.parseInt(request.getParameter("area"));
+        Double cost = Double.parseDouble(request.getParameter("cost"));
+        Integer maxPeople = Integer.parseInt(request.getParameter("max-people"));
+        Integer rentTypeId = Integer.parseInt(request.getParameter("rent-type"));
+        Integer facilityTypeId = Integer.parseInt(request.getParameter("facility-type"));
         String standardRoom = request.getParameter("standard-room");
         String descriptionOtherConvenience = request.getParameter("description-other-convenience");
-        double poolArea = Double.parseDouble(request.getParameter("pool-area"));
-        int numbersOfFloors = Integer.parseInt(request.getParameter("number-of-floors"));
+        Double poolArea;
+        if (request.getParameter("pool-area") == null){
+            poolArea = null;
+        }else {
+            poolArea = Double.valueOf(request.getParameter("pool-area"));
+        }
+        Integer numbersOfFloors = Integer.parseInt(request.getParameter("number-of-floors"));
         String facilityFree = request.getParameter("facility_free");
         Facility facility = new Facility(id, name, area, cost, maxPeople, rentTypeId, facilityTypeId, standardRoom, descriptionOtherConvenience, poolArea, numbersOfFloors, facilityFree);
         boolean check = facilityService.add(facility);

@@ -51,13 +51,13 @@ email,address,customer_type_id)value
 '22 Ngô Quyền, Đà Nẵng',2
 );
 
-insert into rent_type(id,`name`)
+insert into rent_type(id, rent_type_name)
 value(1,"Năm"),
 (2,"Tháng"),
 (3,"Ngày"),
 (4,"Giờ");
 
-insert into facility_type(id,`name`)
+insert into facility_type(id, facility_type_name)
 value(1,"Villa"),
 (2,"House"),
 (3,"Room");
@@ -112,3 +112,6 @@ call update_customer(2, 1, "Trần Tấn ", "1999-10-20", 1, "909876546", "08888
 select * from facility;
 
 select * from facility join rent_type on facility.rent_type_id = rent_type.id join facility_type on facility.facility_type_id = facility_type.id;
+
+insert into facility(id,`name`,area,cost,max_people,rent_type_id,facility_type_id,standard_room,description_other_convenience,pool_area,numbers_of_floors, facility_free) value(19,"Villa Beach Front",25000,10000000,10,1,1,"vip","abc",null, 10, null);
+

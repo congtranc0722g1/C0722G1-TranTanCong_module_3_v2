@@ -49,7 +49,7 @@
         <p style="color: brown; margin-left: 215px">${mess}</p>
     </c:if>
     <div class="row margin-create-edit-facility">
-        <form action="/facility?action=add" method="post">
+        <form method="post">
             <div class="mb-3">
                 <label class="form-label">Loại Dịch Vụ</label>
                 <select name="facility-type" id="elements" onchange="showValue()">

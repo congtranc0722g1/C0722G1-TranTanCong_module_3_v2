@@ -25,7 +25,7 @@ public class FacilityService implements IFacilityService {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(Integer id) {
         return false;
     }
 
@@ -35,7 +35,7 @@ public class FacilityService implements IFacilityService {
     }
 
     @Override
-    public Facility findById(int id) {
+    public Facility findById(Integer id) {
         return null;
     }
 }
