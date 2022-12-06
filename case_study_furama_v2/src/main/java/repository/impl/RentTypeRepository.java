@@ -14,6 +14,7 @@ import java.util.List;
 
 public class RentTypeRepository implements IRentTypeRepository {
     private final String SELECT_ALL = "select * from rent_type;";
+
     @Override
     public List<RentType> findAll() {
         Connection connection = BaseRepository.getConnectDB();
@@ -21,7 +22,7 @@ public class RentTypeRepository implements IRentTypeRepository {
         try {
             PreparedStatement ps = connection.prepareStatement(SELECT_ALL);
             ResultSet resultSet = ps.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("rent_type_name");
                 RentType rentType = new RentType(id, name);

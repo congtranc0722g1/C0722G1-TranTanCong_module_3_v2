@@ -9,6 +9,7 @@ import java.util.List;
 
 public class CustomerTypeService implements ICustomerTypeService {
     private ICustomerTypeRepository customerTypeRepository = new CustomerTypeRepository();
+
     @Override
     public List<CustomerType> finAll() {
         return customerTypeRepository.finAll();

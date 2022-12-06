@@ -48,7 +48,11 @@ public class CustomerServlet extends HttpServlet {
             mess = "Xóa thành công";
         }
         request.setAttribute("mess", mess);
-        showListcustomer(request, response);
+        try {
+            response.sendRedirect("/customer");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response) {

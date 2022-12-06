@@ -12,8 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacilityTypeRepository  implements IFacilityTypeRepository {
+public class FacilityTypeRepository implements IFacilityTypeRepository {
     private final String SELECT_ALL = "select * from facility_type;";
+
     @Override
     public List<FacilityType> findAll() {
         Connection connection = BaseRepository.getConnectDB();
@@ -21,7 +22,7 @@ public class FacilityTypeRepository  implements IFacilityTypeRepository {
         try {
             PreparedStatement ps = connection.prepareStatement(SELECT_ALL);
             ResultSet resultSet = ps.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("facility_type_name");
                 FacilityType facilityType = new FacilityType(id, name);

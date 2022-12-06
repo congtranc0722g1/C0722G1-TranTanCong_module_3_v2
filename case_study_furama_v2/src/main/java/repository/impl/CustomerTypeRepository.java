@@ -15,6 +15,7 @@ import java.util.List;
 
 public class CustomerTypeRepository implements ICustomerTypeRepository {
     private final String SELECT_ALL = "select * from customer_type";
+
     @Override
     public List<CustomerType> finAll() {
         Connection connection = BaseRepository.getConnectDB();
@@ -25,7 +26,7 @@ public class CustomerTypeRepository implements ICustomerTypeRepository {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
-                CustomerType  customerType = new CustomerType(id, name);
+                CustomerType customerType = new CustomerType(id, name);
                 customerTypeList.add(customerType);
             }
         } catch (SQLException throwables) {

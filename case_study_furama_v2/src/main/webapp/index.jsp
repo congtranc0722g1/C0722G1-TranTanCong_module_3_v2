@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>$Title$</title>
+  <title>Main</title>
   <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
   <link rel="stylesheet" href="/css/furama_resort_csss.css">
 </head>

@@ -9,6 +9,7 @@ import java.util.List;
 
 public class FacilityService implements IFacilityService {
     private IFacilityRepository facilityRepository = new FacilityRepository();
+
     @Override
     public List<Facility> findAll() {
         return facilityRepository.findAll();

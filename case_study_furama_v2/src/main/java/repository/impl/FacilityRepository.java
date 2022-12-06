@@ -22,6 +22,7 @@ public class FacilityRepository implements IFacilityRepository {
     private final String UPDATE_ROOM = "call update_room(?,?,?,?,?,?,?,?);";
     private final String DELETE_FACILITY = "delete from facility where id = ?;";
     private final String SEARCH_FACILITY = "select * from facility join facility_type on facility.facility_type_id = facility_type.id join rent_type on facility.rent_type_id = rent_type.id where facility.`name` like ? and facility_type.facility_type_name like ?;";
+
     @Override
     public List<Facility> findAll() {
         Connection connection = BaseRepository.getConnectDB();
@@ -29,7 +30,7 @@ public class FacilityRepository implements IFacilityRepository {
         try {
             PreparedStatement ps = connection.prepareStatement(SELECT_ALL);
             ResultSet resultSet = ps.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Integer id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 Integer area = resultSet.getInt("area");
@@ -58,7 +59,7 @@ public class FacilityRepository implements IFacilityRepository {
         PreparedStatement ps = null;
         Connection connection = BaseRepository.getConnectDB();
         try {
-            if (facility.getFacilityTypeId() == 1){
+            if (facility.getFacilityTypeId() == 1) {
                 ps = connection.prepareStatement(INSERT_FACILITY_VILLA);
                 ps.setInt(1, facility.getId());
                 ps.setString(2, facility.getName());
@@ -71,7 +72,7 @@ public class FacilityRepository implements IFacilityRepository {
                 ps.setString(9, facility.getDescriptionOtherConvenience());
                 ps.setDouble(10, facility.getPoolArea());
                 ps.setInt(11, facility.getNumbersOfFloors());
-            }else if (facility.getFacilityTypeId() == 2){
+            } else if (facility.getFacilityTypeId() == 2) {
                 ps = connection.prepareStatement(INSERT_FACILITY_HOUSE);
                 ps.setInt(1, facility.getId());
                 ps.setString(2, facility.getName());
@@ -106,47 +107,47 @@ public class FacilityRepository implements IFacilityRepository {
         CallableStatement cs = null;
         Connection connection = BaseRepository.getConnectDB();
 
-            try {
-                if(facility.getFacilityTypeId() == 1){
-                    cs = connection.prepareCall(UPDATE_VILLA);
-                    cs.setInt(1, facility.getId());
-                    cs.setString(2, facility.getName());
-                    cs.setInt(3, facility.getArea());
-                    cs.setDouble(4, facility.getCost());
-                    cs.setInt(5, facility.getMaxPeople());
-                    cs.setInt(6, facility.getRentTypeId());
-                    cs.setInt(7, facility.getFacilityTypeId());
-                    cs.setString(8, facility.getStandardRoom());
-                    cs.setString(9, facility.getDescriptionOtherConvenience());
-                    cs.setDouble(10, facility.getPoolArea());
-                    cs.setInt(11, facility.getNumbersOfFloors());
-                }else if(facility.getFacilityTypeId() == 2){
-                    cs = connection.prepareCall(UPDATE_HOUSE);
-                    cs.setInt(1, facility.getId());
-                    cs.setString(2, facility.getName());
-                    cs.setInt(3, facility.getArea());
-                    cs.setDouble(4, facility.getCost());
-                    cs.setInt(5, facility.getMaxPeople());
-                    cs.setInt(6, facility.getRentTypeId());
-                    cs.setInt(7, facility.getFacilityTypeId());
-                    cs.setString(8, facility.getStandardRoom());
-                    cs.setString(9, facility.getDescriptionOtherConvenience());
-                    cs.setInt(10, facility.getNumbersOfFloors());
-                }else {
-                    cs = connection.prepareCall(UPDATE_ROOM);
-                    cs.setInt(1, facility.getId());
-                    cs.setString(2, facility.getName());
-                    cs.setInt(3, facility.getArea());
-                    cs.setDouble(4, facility.getCost());
-                    cs.setInt(5, facility.getMaxPeople());
-                    cs.setInt(6, facility.getRentTypeId());
-                    cs.setInt(7, facility.getFacilityTypeId());
-                    cs.setString(8, facility.getFacilityFree());
-                }
-                return cs.executeUpdate() > 0;
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+        try {
+            if (facility.getFacilityTypeId() == 1) {
+                cs = connection.prepareCall(UPDATE_VILLA);
+                cs.setInt(1, facility.getId());
+                cs.setString(2, facility.getName());
+                cs.setInt(3, facility.getArea());
+                cs.setDouble(4, facility.getCost());
+                cs.setInt(5, facility.getMaxPeople());
+                cs.setInt(6, facility.getRentTypeId());
+                cs.setInt(7, facility.getFacilityTypeId());
+                cs.setString(8, facility.getStandardRoom());
+                cs.setString(9, facility.getDescriptionOtherConvenience());
+                cs.setDouble(10, facility.getPoolArea());
+                cs.setInt(11, facility.getNumbersOfFloors());
+            } else if (facility.getFacilityTypeId() == 2) {
+                cs = connection.prepareCall(UPDATE_HOUSE);
+                cs.setInt(1, facility.getId());
+                cs.setString(2, facility.getName());
+                cs.setInt(3, facility.getArea());
+                cs.setDouble(4, facility.getCost());
+                cs.setInt(5, facility.getMaxPeople());
+                cs.setInt(6, facility.getRentTypeId());
+                cs.setInt(7, facility.getFacilityTypeId());
+                cs.setString(8, facility.getStandardRoom());
+                cs.setString(9, facility.getDescriptionOtherConvenience());
+                cs.setInt(10, facility.getNumbersOfFloors());
+            } else {
+                cs = connection.prepareCall(UPDATE_ROOM);
+                cs.setInt(1, facility.getId());
+                cs.setString(2, facility.getName());
+                cs.setInt(3, facility.getArea());
+                cs.setDouble(4, facility.getCost());
+                cs.setInt(5, facility.getMaxPeople());
+                cs.setInt(6, facility.getRentTypeId());
+                cs.setInt(7, facility.getFacilityTypeId());
+                cs.setString(8, facility.getFacilityFree());
             }
+            return cs.executeUpdate() > 0;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return false;
     }
 
@@ -172,7 +173,7 @@ public class FacilityRepository implements IFacilityRepository {
             ps.setString(1, "%" + nameSearch + "%");
             ps.setString(2, "%" + facilityTypeNameSearch + "%");
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 Integer id = rs.getInt("id");
                 String name = rs.getString("name");
                 Integer area = rs.getInt("area");
@@ -187,7 +188,7 @@ public class FacilityRepository implements IFacilityRepository {
                 String facilityTypeName = rs.getString("facility_type_name");
                 RentType rentType = new RentType(rentTypeName);
                 FacilityType facilityType = new FacilityType(facilityTypeName);
-                Facility facility = new Facility(id, name, area, cost, maxPeople, standardRoom, descriptionOtherConvenience, poolArea, numbersOfFloors,facilityFree, rentType, facilityType);
+                Facility facility = new Facility(id, name, area, cost, maxPeople, standardRoom, descriptionOtherConvenience, poolArea, numbersOfFloors, facilityFree, rentType, facilityType);
                 facilityList.add(facility);
             }
         } catch (SQLException throwables) {
@@ -204,7 +205,7 @@ public class FacilityRepository implements IFacilityRepository {
             PreparedStatement ps = connection.prepareStatement(SEARCH_BY_ID);
             ps.setInt(1, idSearch);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 Integer id = rs.getInt("id");
                 String name = rs.getString("name");
                 Integer area = rs.getInt("area");

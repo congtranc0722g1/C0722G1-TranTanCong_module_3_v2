@@ -23,6 +23,7 @@ public class FacilityServlet extends HttpServlet {
     private IFacilityService facilityService = new FacilityService();
     private IRentTypeService rentTypeService = new RentTypeService();
     private IFacilityTypeService facilityTypeService = new FacilityTypeService();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -50,8 +51,12 @@ public class FacilityServlet extends HttpServlet {
         if (check) {
             mess = "Xóa thành công";
         }
-        request.setAttribute("mess", mess);
-        showListFacility(request, response);
+//        request.setAttribute("mess", mess);
+        try {
+            response.sendRedirect("/facility?mess=" + mess);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response) {
@@ -65,15 +70,15 @@ public class FacilityServlet extends HttpServlet {
         String standardRoom = request.getParameter("standard-room");
         String descriptionOtherConvenience = request.getParameter("description-other-convenience");
         Double poolArea;
-        if (request.getParameter("pool-area") == null){
+        if (request.getParameter("pool-area") == null) {
             poolArea = null;
-        }else {
+        } else {
             poolArea = Double.parseDouble(request.getParameter("pool-area"));
         }
         Integer numbersOfFloors;
-        if(request.getParameter("number-of-floors") == null){
+        if (request.getParameter("number-of-floors") == null) {
             numbersOfFloors = null;
-        }else {
+        } else {
             numbersOfFloors = Integer.parseInt(request.getParameter("number-of-floors"));
         }
         String facilityFree = request.getParameter("facility_free");
@@ -110,15 +115,15 @@ public class FacilityServlet extends HttpServlet {
         String standardRoom = request.getParameter("standard-room");
         String descriptionOtherConvenience = request.getParameter("description-other-convenience");
         Double poolArea;
-        if (request.getParameter("pool-area") == null){
+        if (request.getParameter("pool-area") == null) {
             poolArea = null;
-        }else {
+        } else {
             poolArea = Double.parseDouble(request.getParameter("pool-area"));
         }
         Integer numbersOfFloors;
-        if(request.getParameter("number-of-floors") == null){
+        if (request.getParameter("number-of-floors") == null) {
             numbersOfFloors = null;
-        }else {
+        } else {
             numbersOfFloors = Integer.parseInt(request.getParameter("number-of-floors"));
         }
         String facilityFree = request.getParameter("facility_free");
@@ -201,7 +206,7 @@ public class FacilityServlet extends HttpServlet {
         List<FacilityType> facilityTypeList = facilityTypeService.findAll();
         request.setAttribute("facilityTypeList", facilityTypeList);
         try {
-            request.getRequestDispatcher("view/facility/create.jsp").forward(request,response);
+            request.getRequestDispatcher("view/facility/create.jsp").forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

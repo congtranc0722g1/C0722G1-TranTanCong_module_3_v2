@@ -16,6 +16,7 @@ public class CustomerRepository implements ICustomerRepository {
     private final String SEARCH_CUSTOMER = "select * from customer where name like ? and address like ?";
     private final String SEARCH_CUSTOMER_BY_ID = "select * from customer where id=?";
     private final String UPDATE_CUSTOMER = "call update_customer(?,?,?,?,?,?,?,?,?);";
+
     @Override
     public List<Customer> findAll() {
         List<Customer> customerList = new ArrayList<>();
