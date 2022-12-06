@@ -13,7 +13,7 @@ public interface IFacilityRepository {
 
     boolean delete(Integer id);
 
-    List<Facility> search (String name_search, String price_search);
+    List<Facility> search (String nameSearch, String facilityTypeNameSearch);
 
     Facility findById(Integer idSearch);
 }

@@ -71,10 +71,10 @@
 
         <div class="col-lg-4">
             <form class="d-flex">
-                <input class="form-control me-2 justify-content-between" type="text" placeholder="Nhập tên dịch vụ"
+                <input value="${name}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập tên dịch vụ"
                        aria-label="Search" style="width: 150px" name="name">
-                <input class="form-control me-2 justify-content-between" type="text" placeholder="Nhập loại dịch vụ"
-                       aria-label="Search" style="width: 150px" name="address">
+                <input value="${facilityTypeName}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập loại dịch vụ"
+                       aria-label="Search" style="width: 150px" name="facility-type-name">
                 <input type="hidden" name="action" value="search">
                 <button class="btn btn-success btn-outline-warning" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -85,7 +85,9 @@
             </form>
         </div>
     </div>
-
+    <c:if test="${mess != null}">
+        <p style="color: brown; margin-left: 23px">${mess}</p>
+    </c:if>
     <div class="row margin">
         <table class="table table-striped table-bordered" id="tableCustomer" style="width: 100%">
             <thead>

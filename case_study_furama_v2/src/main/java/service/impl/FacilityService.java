@@ -30,8 +30,8 @@ public class FacilityService implements IFacilityService {
     }
 
     @Override
-    public List<Facility> search(String name_search, String price_search) {
-        return null;
+    public List<Facility> search(String nameSearch, String facilityTypeNameSearch) {
+        return facilityRepository.search(nameSearch, facilityTypeNameSearch);
     }
 
     @Override

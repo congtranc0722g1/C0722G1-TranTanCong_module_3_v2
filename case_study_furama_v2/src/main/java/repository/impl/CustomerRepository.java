@@ -98,13 +98,13 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public List<Customer> search(String name_search, String address_search) {
+    public List<Customer> search(String nameSearch, String addressSearch) {
         Connection connection = BaseRepository.getConnectDB();
         List<Customer> customerList = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement(SEARCH_CUSTOMER);
-            ps.setString(1, "%" + name_search + "%");
-            ps.setString(2, "%" + address_search + "%");
+            ps.setString(1, "%" + nameSearch + "%");
+            ps.setString(2, "%" + addressSearch + "%");
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");

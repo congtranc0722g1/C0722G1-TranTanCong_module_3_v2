@@ -68,9 +68,9 @@
 
     <div class="col-lg-4">
         <form action="/customer" method="get" class="d-flex">
-            <input value="${name_search}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập tên"
+            <input value="${nameSearch}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập tên"
                    aria-label="Search" style="width: 150px" name="name">
-            <input value="${address_search}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập địa chỉ"
+            <input value="${addressSearch}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập địa chỉ"
                    aria-label="Search" style="width: 150px" name="address">
             <input type="hidden" name="action" value="search">
             <button class="btn btn-success btn-outline-warning" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

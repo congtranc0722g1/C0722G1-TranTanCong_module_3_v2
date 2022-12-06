@@ -13,7 +13,7 @@ public interface ICustomerRepository {
 
     boolean delete(int id);
 
-    List<Customer> search (String name_search, String address_search);
+    List<Customer> search (String nameSearch, String addressSearch);
 
     Customer findById(int id);
 }

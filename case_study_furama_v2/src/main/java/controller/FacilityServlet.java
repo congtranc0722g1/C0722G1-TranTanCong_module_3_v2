@@ -163,6 +163,19 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String facilityTypeName = request.getParameter("facility-type-name");
+        request.setAttribute("name", name);
+        request.setAttribute("facilityTypeName", facilityTypeName);
+        List<Facility> facilityList = facilityService.search(name, facilityTypeName);
+        request.setAttribute("facilityList", facilityList);
+        try {
+            request.getRequestDispatcher("view/facility/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showFormedit(HttpServletRequest request, HttpServletResponse response) {

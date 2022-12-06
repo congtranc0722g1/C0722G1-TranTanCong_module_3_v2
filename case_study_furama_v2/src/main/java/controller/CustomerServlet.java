@@ -131,14 +131,14 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response) {
-        String name_search = request.getParameter("name");
-        String address_search = request.getParameter("address");
-        List<Customer> customerList = customerService.search(name_search, address_search);
+        String nameSearch = request.getParameter("name");
+        String addressSearch = request.getParameter("address");
+        List<Customer> customerList = customerService.search(nameSearch, addressSearch);
         request.setAttribute("customerList", customerList);
         List<CustomerType> customerTypeList = customerTypeService.finAll();
         request.setAttribute("customerTypeList", customerTypeList);
-        request.setAttribute("name_search", name_search);
-        request.setAttribute("address_search", address_search);
+        request.setAttribute("nameSearch", nameSearch);
+        request.setAttribute("addressSearch", addressSearch);
         try {
             request.getRequestDispatcher("view/customer/list.jsp").forward(request, response);
         } catch (ServletException e) {
