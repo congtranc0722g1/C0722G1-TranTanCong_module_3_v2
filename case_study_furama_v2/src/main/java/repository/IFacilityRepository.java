@@ -15,5 +15,5 @@ public interface IFacilityRepository {
 
     List<Facility> search (String name_search, String price_search);
 
-    Facility findById(Integer id);
+    Facility findById(Integer idSearch);
 }

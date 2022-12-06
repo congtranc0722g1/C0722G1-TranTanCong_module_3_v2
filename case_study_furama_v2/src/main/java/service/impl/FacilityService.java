@@ -21,12 +21,12 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public boolean update(Facility facility) {
-        return false;
+        return facilityRepository.update(facility);
     }
 
     @Override
     public boolean delete(Integer id) {
-        return false;
+        return facilityRepository.delete(id);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class FacilityService implements IFacilityService {
     }
 
     @Override
-    public Facility findById(Integer id) {
-        return null;
+    public Facility findById(Integer idSearch) {
+        return facilityRepository.findById(idSearch);
     }
 }

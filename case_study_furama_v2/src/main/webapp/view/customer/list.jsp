@@ -55,7 +55,7 @@
     </div>
 
     <div class="col-lg-3">
-        <a href="/customer">
+        <a href="../../index.jsp">
             <button class="btn btn-warning btn-outline-danger">Quay lại trang chủ</button>
         </a>
     </div>

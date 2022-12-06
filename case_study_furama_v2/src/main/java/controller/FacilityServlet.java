@@ -44,9 +44,59 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) {
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        boolean check = facilityService.delete(id);
+        String mess = "Xóa không thành công";
+        if (check) {
+            mess = "Xóa thành công";
+        }
+        request.setAttribute("mess", mess);
+        showListFacility(request, response);
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response) {
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        String name = request.getParameter("name");
+        Integer area = Integer.parseInt(request.getParameter("area"));
+        Double cost = Double.parseDouble(request.getParameter("cost"));
+        Integer maxPeople = Integer.parseInt(request.getParameter("max-people"));
+        Integer rentTypeId = Integer.parseInt(request.getParameter("rent-type"));
+        Integer facilityTypeId = Integer.parseInt(request.getParameter("facility-type"));
+        String standardRoom = request.getParameter("standard-room");
+        String descriptionOtherConvenience = request.getParameter("description-other-convenience");
+        Double poolArea;
+        if (request.getParameter("pool-area") == null){
+            poolArea = null;
+        }else {
+            poolArea = Double.parseDouble(request.getParameter("pool-area"));
+        }
+        Integer numbersOfFloors;
+        if(request.getParameter("number-of-floors") == null){
+            numbersOfFloors = null;
+        }else {
+            numbersOfFloors = Integer.parseInt(request.getParameter("number-of-floors"));
+        }
+        String facilityFree = request.getParameter("facility_free");
+        Facility facility = new Facility(id, name, area, cost, maxPeople, rentTypeId, facilityTypeId, standardRoom, descriptionOtherConvenience, poolArea, numbersOfFloors, facilityFree);
+        boolean check = facilityService.update(facility);
+        String mess = " Chỉnh sửa không thành công";
+        if (check) {
+            mess = "Chỉnh sửa thành công";
+        }
+        request.setAttribute("mess", mess);
+        List<RentType> rentTypeList = rentTypeService.findAll();
+        request.setAttribute("rentTypeList", rentTypeList);
+        List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+        request.setAttribute("facilityTypeList", facilityTypeList);
+        Facility facility1 = facilityService.findById(id);
+        request.setAttribute("facility", facility1);
+        try {
+            request.getRequestDispatcher("view/facility/edit.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) {
@@ -63,9 +113,14 @@ public class FacilityServlet extends HttpServlet {
         if (request.getParameter("pool-area") == null){
             poolArea = null;
         }else {
-            poolArea = Double.valueOf(request.getParameter("pool-area"));
+            poolArea = Double.parseDouble(request.getParameter("pool-area"));
         }
-        Integer numbersOfFloors = Integer.parseInt(request.getParameter("number-of-floors"));
+        Integer numbersOfFloors;
+        if(request.getParameter("number-of-floors") == null){
+            numbersOfFloors = null;
+        }else {
+            numbersOfFloors = Integer.parseInt(request.getParameter("number-of-floors"));
+        }
         String facilityFree = request.getParameter("facility_free");
         Facility facility = new Facility(id, name, area, cost, maxPeople, rentTypeId, facilityTypeId, standardRoom, descriptionOtherConvenience, poolArea, numbersOfFloors, facilityFree);
         boolean check = facilityService.add(facility);
@@ -111,6 +166,20 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void showFormedit(HttpServletRequest request, HttpServletResponse response) {
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        Facility facility = facilityService.findById(id);
+        request.setAttribute("facility", facility);
+        List<RentType> rentTypeList = rentTypeService.findAll();
+        request.setAttribute("rentTypeList", rentTypeList);
+        List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+        request.setAttribute("facilityTypeList", facilityTypeList);
+        try {
+            request.getRequestDispatcher("view/facility/edit.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showFormcreate(HttpServletRequest request, HttpServletResponse response) {

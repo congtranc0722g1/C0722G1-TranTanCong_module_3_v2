@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cong
-  Date: 11/29/2022
-  Time: 9:11 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -64,7 +58,7 @@
         </div>
 
         <div class="col-lg-3">
-            <a href="/facility">
+            <a href="../../index.jsp">
                 <button class="btn btn-warning btn-outline-danger">Quay lại trang chủ</button>
             </a>
         </div>
@@ -138,10 +132,11 @@
                 </c:if>
                 <td>${facility.getFacilityFree()}</td>
                 <td>
-                    <a class="btn btn-primary" style="width: 100px" href="edit.html" role="button">Chỉnh Sửa</a>
+                    <a class="btn btn-primary" style="width: 100px" href="/facility?action=edit&id=${facility.getId()}" role="button">Chỉnh Sửa</a>
                 </td>
                 <td><a>
-                    <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button onclick="infoDelete('${facility.getId()}', '${facility.getName()}')" type="button"
+                            class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Xóa
                     </button>
                 </a></td>
@@ -152,21 +147,23 @@
     </div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Xóa Dịch Vụ</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Bạn có muốn xóa
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-primary">Xóa</button>
-            </div>
+            <form action="/facility?action=delete" method="post">
+                <div class="modal-body">
+                    <input type="text" hidden id="deleteId" name="id">
+                    <span>Bạn có muốn xóa dịch vụ</span> <span style="color: red" id="deleteName"></span> <span>không ?</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Xóa</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

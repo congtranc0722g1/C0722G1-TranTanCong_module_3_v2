@@ -44,7 +44,7 @@
     </div>
 </div>
 <div>
-    <h1 class="text-center text-danger">Thêm mới dịch vụ</h1>
+    <h1 class="text-center text-danger">THÊM MỚI DỊCH VỤ</h1>
     <c:if test="${mess != null}">
         <p style="color: brown; margin-left: 215px">${mess}</p>
     </c:if>
@@ -65,7 +65,7 @@
                 </select>
                 <div id="results"></div>
             </div>
-            <button type="reset" class="btn btn-secondary">Hủy</button>
+            <a class="btn btn-secondary" href="/facility" role="button">Hủy</a>
             <button type="submit" class="btn btn-primary">Lưu</button>
         </form>
     </div>
@@ -96,7 +96,7 @@
         "                <input type=\"text\" name=\"standard-room\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
-        "                <label class=\"form-label\">Mô Tả Nghi Khác</label>\n" +
+        "                <label class=\"form-label\">Mô Tả Tiện Nghi Khác</label>\n" +
         "                <input type=\"text\" name=\"description-other-convenience\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
@@ -133,7 +133,7 @@
         "                <input type=\"text\" name=\"standard-room\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +
-        "                <label class=\"form-label\">Mô Tả Nghi Khác</label>\n" +
+        "                <label class=\"form-label\">Mô Tả Tiện Nghi Khác</label>\n" +
         "                <input type=\"text\" name=\"description-other-convenience\" class=\"form-control\">\n" +
         "            </div>\n" +
         "            <div class=\"mb-3\">\n" +

@@ -92,9 +92,7 @@
                 <label class="form-label">Địa chỉ</label>
                 <input type="text" name="address" class="form-control">
             </div>
-            <a href="/customer">
                 <a class="btn btn-secondary" href="/customer" role="button">Hủy</a>
-            </a>
                 <button type="submit" class="btn btn-primary">Lưu</button>
         </form>
     </div>
