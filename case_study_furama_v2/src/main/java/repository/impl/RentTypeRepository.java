@@ -1,7 +1,6 @@
 package repository.impl;
 
-import model.FacilityType;
-import model.RentType;
+import model.facility.RentType;
 import repository.BaseRepository;
 import repository.IRentTypeRepository;
 

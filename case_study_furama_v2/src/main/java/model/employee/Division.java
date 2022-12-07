@@ -1,13 +1,13 @@
-package model;
+package model.employee;
 
-public class CustomerType {
+public class Division {
     private int id;
     private String name;
 
-    public CustomerType() {
+    public Division() {
     }
 
-    public CustomerType(int id, String name) {
+    public Division(int id, String name) {
         this.id = id;
         this.name = name;
     }

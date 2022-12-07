@@ -1,8 +1,7 @@
 package repository.impl;
 
-import model.FacilityType;
+import model.facility.FacilityType;
 import repository.BaseRepository;
-import repository.IFacilityRepository;
 import repository.IFacilityTypeRepository;
 
 import java.sql.Connection;

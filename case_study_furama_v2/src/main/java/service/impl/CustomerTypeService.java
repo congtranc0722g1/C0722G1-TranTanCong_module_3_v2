@@ -1,6 +1,6 @@
 package service.impl;
 
-import model.CustomerType;
+import model.customer.CustomerType;
 import repository.ICustomerTypeRepository;
 import repository.impl.CustomerTypeRepository;
 import service.ICustomerTypeService;

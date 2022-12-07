@@ -90,7 +90,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item"
-                     href="http://localhost:63342/module3/case_study_moudule_3_web/employee/employee.html?_ijt=4sjur7198m01acdcc8rjin5c3c">Quản
+                     href="/employee">Quản
                 lý nhân viên</a></li>
               <li><a class="dropdown-item"
                      href="/customer">Quản

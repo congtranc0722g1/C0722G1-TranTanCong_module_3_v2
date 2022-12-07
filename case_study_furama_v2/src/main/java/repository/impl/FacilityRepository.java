@@ -1,15 +1,14 @@
 package repository.impl;
 
-import model.Facility;
-import model.FacilityType;
-import model.RentType;
+import model.facility.Facility;
+import model.facility.FacilityType;
+import model.facility.RentType;
 import repository.BaseRepository;
 import repository.IFacilityRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 public class FacilityRepository implements IFacilityRepository {
     private final String SELECT_ALL = "select * from facility join rent_type on facility.rent_type_id = rent_type.id join facility_type on facility.facility_type_id = facility_type.id;";

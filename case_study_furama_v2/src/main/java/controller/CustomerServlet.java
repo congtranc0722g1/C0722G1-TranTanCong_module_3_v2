@@ -1,7 +1,7 @@
 package controller;
 
-import model.Customer;
-import model.CustomerType;
+import model.customer.Customer;
+import model.customer.CustomerType;
 import service.ICustomerService;
 import service.ICustomerTypeService;
 import service.impl.CustomerService;

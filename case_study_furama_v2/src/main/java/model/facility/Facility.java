@@ -1,4 +1,4 @@
-package model;
+package model.facility;
 
 public class Facility {
     private Integer id;

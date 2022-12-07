@@ -1,17 +1,17 @@
-package model;
+package model.facility;
 
-public class FacilityType {
+public class RentType {
     private int id;
     private String name;
 
-    public FacilityType() {
+    public RentType() {
     }
 
-    public FacilityType(String name) {
+    public RentType(String name) {
         this.name = name;
     }
 
-    public FacilityType(int id, String name) {
+    public RentType(int id, String name) {
         this.id = id;
         this.name = name;
     }

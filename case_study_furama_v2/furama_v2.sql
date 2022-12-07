@@ -46,6 +46,38 @@ foreign key(rent_type_id) references rent_type(id),
 foreign key(facility_type_id) references facility_type(id)
 );
 
-drop table facility_type;
+create table `position`(
+id int primary key,
+position_name varchar(45)
+);
+
+create table education_degree (
+id int primary key,
+education_degree_name varchar(45)
+);
+
+create table division (
+id int primary key,
+division_name varchar(45)
+);
+
+create table employee (
+id int auto_increment primary key,
+`name` varchar(45),
+date_of_birth date,
+id_card varchar(45),
+salary double,
+phone_number varchar(45),
+email varchar(45),
+address varchar(45),
+position_id int,
+education_degree_id int,
+division_id int,
+foreign key(position_id) references `position`(id),
+foreign key(education_degree_id) references education_degree(id),
+foreign key(division_id) references division(id)
+);
+
+drop table division;
 drop table facility;
 drop table rent_type;

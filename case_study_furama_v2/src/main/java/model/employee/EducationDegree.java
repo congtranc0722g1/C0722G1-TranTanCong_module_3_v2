@@ -1,17 +1,13 @@
-package model;
+package model.employee;
 
-public class RentType {
+public class EducationDegree {
     private int id;
     private String name;
 
-    public RentType() {
+    public EducationDegree() {
     }
 
-    public RentType(String name) {
-        this.name = name;
-    }
-
-    public RentType(int id, String name) {
+    public EducationDegree(int id, String name) {
         this.id = id;
         this.name = name;
     }

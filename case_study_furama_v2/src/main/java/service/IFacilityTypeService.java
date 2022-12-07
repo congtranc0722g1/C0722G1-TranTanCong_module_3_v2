@@ -1,6 +1,6 @@
 package service;
 
-import model.FacilityType;
+import model.facility.FacilityType;
 
 import java.util.List;
 

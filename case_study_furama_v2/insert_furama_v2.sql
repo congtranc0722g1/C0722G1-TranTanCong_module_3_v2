@@ -89,6 +89,72 @@ facility_type_id
 (6,"Room Twin 02",3000,900000,2,"normal",
 "Có tivi",null,null,"1 xe máy",4,3);
 
+insert into `position` (id, position_name)
+value (1,'Quản Lý'), (2,'Nhân Viên');
+
+insert into education_degree(id,education_degree_name)
+value(1,"Trung Cấp"),
+	(2,"Cao Đẳng"),
+	(3,"Đại Học"),
+	(4,"Sau Đại Học");
+
+insert into division(id,division_name)
+value(1,"Sale-Marketing"),
+(2,"Hành chính"),
+(3,"Phục vụ"),
+(4,"Quản lý");
+
+insert into employee(
+id,
+`name`,
+date_of_birth,
+id_card,
+salary,
+phone_number,
+email,
+address,
+position_id,
+education_degree_id,
+division_id
+)value
+(1,"Nguyễn Văn An",'1970-11-07',"456231786",
+10000000,"0901234121","annguyen@gmail.com",
+"295 Nguyễn Tất Thành,Đà Nẵng",1,3,1),
+(2,"Lê Văn Bình",'1997-04-09',"654231234",
+7000000,"654231234","binhlv@gmail.com",
+"22 Yên Bái, Đà Nẵng",1,2,2),
+(3,"Hồ Thị Yến",'1995-12-12',"999231723",14000000,
+"0412352315","thiyen@gmail.com",
+"K234/11 Điện Biên Phủ, Gia Lai",1,3,2),
+(4,'Võ Công Toản','1980-04-04','123231365',17000000
+,'0374443232','toan0404@gmail.com',
+'77 Hoàng Diệu, Quảng Trị',1,4,4
+),
+(5,'Nguyễn Bỉnh Phát','1999-12-09','454363232',6000000,
+'0902341231','phatphat@gmail.com',
+ '43 Yên Bái, Đà Nẵng',2,1,1
+),
+(6,'Khúc Nguyễn An Nghi','2000-11-08','964542311',7000000,
+'0978653213','annghi20@gmail.com',
+'294 Nguyễn Tất Thành, Đà Nẵng',2,2,3
+),
+(7,'Nguyễn Hữu Hà','1993-01-01','534323231',8000000,
+'0941234553','nhh0101@gmail.com',
+'4 Nguyễn Chí Thanh, Huế',2,3,2
+),
+(8,'Nguyễn Hà Đông','1989-09-03','234414123',9000000,
+'0642123111','donghanguyen@gmail.com',
+'111 Hùng Vương, Hà Nội',2,4,4
+),
+(9,'Tòng Hoang','1982-09-03','256781231',6000000,
+'0245144444','hoangtong@gmail.com',
+'213 Hàm Nghi, Đà Nẵng',2,4,4
+),
+(10,'Nguyễn Công Đạo','1994-01-08','755434343',8000000,
+'0988767111','nguyencongdao12@gmail.com',
+'6 Hoà Khánh, Đồng Nai',2,3,2
+);
+
 delimiter //
 create procedure delete_customer(in p_id int)
 begin
@@ -114,4 +180,33 @@ select * from facility;
 select * from facility join rent_type on facility.rent_type_id = rent_type.id join facility_type on facility.facility_type_id = facility_type.id;
 
 insert into facility(id,`name`,area,cost,max_people,rent_type_id,facility_type_id,standard_room,description_other_convenience,pool_area,numbers_of_floors, facility_free) value(19,"Villa Beach Front",25000,10000000,10,1,1,"vip","abc",null, 10, null);
+
+select * from facility where id = 1;
+
+delimiter //
+create procedure update_villa(in p_id int, in p_name varchar(45), in p_area int, in p_cost double, in p_max_people int, in p_rent_type_id int, in p_facility_type_id int, in p_standard_room varchar(45), in p_description_other_convenience varchar(45), in p_pool_area double, in p_numbers_of_floors int)
+begin
+update facility
+set `name`= p_name, area = p_area, cost = p_cost, max_people = p_max_people, rent_type_id = p_rent_type_id, facility_type_id = p_facility_type_id, standard_room = p_standard_room, description_other_convenience = p_description_other_convenience, pool_area = p_pool_area, numbers_of_floors = p_numbers_of_floors
+where id = p_id;
+end //
+delimiter ;
+
+delimiter //
+create procedure update_house(in p_id int, in p_name varchar(45), in p_area int, in p_cost double, in p_max_people int, in p_rent_type_id int, in p_facility_type_id int, in p_standard_room varchar(45), in p_description_other_convenience varchar(45), in p_numbers_of_floors int)
+begin
+update facility
+set `name`= p_name, area = p_area, cost = p_cost, max_people = p_max_people, rent_type_id = p_rent_type_id, facility_type_id = p_facility_type_id, standard_room = p_standard_room, description_other_convenience = p_description_other_convenience, numbers_of_floors = p_numbers_of_floors
+where id = p_id;
+end //
+delimiter ;
+
+delimiter //
+create procedure update_room(in p_id int, in p_name varchar(45), in p_area int, in p_cost double, in p_max_people int, in p_rent_type_id int, in p_facility_type_id int, in p_facility_free varchar(45))
+begin
+update facility
+set `name`= p_name, area = p_area, cost = p_cost, max_people = p_max_people, rent_type_id = p_rent_type_id, facility_type_id = p_facility_type_id, facility_free = p_facility_free
+where id = p_id;
+end //
+delimiter ;
 

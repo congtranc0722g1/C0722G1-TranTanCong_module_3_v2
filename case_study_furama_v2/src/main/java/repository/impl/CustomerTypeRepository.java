@@ -1,7 +1,6 @@
 package repository.impl;
 
-import model.Customer;
-import model.CustomerType;
+import model.customer.CustomerType;
 import repository.BaseRepository;
 import repository.ICustomerTypeRepository;
 
@@ -9,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

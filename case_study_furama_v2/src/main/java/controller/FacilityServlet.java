@@ -1,8 +1,8 @@
 package controller;
 
-import model.Facility;
-import model.FacilityType;
-import model.RentType;
+import model.facility.Facility;
+import model.facility.FacilityType;
+import model.facility.RentType;
 import service.IFacilityService;
 import service.IFacilityTypeService;
 import service.IRentTypeService;
@@ -51,12 +51,19 @@ public class FacilityServlet extends HttpServlet {
         if (check) {
             mess = "Xóa thành công";
         }
-//        request.setAttribute("mess", mess);
+        request.setAttribute("mess", mess);
         try {
-            response.sendRedirect("/facility?mess=" + mess);
+            request.getRequestDispatcher("view/facility/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        try {
+//            response.sendRedirect("/facility?mess=" + mess);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response) {
