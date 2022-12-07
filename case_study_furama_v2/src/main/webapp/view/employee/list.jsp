@@ -147,11 +147,8 @@
                 <h5 class="modal-title" id="exampleModalLabel1">Thêm mới nhân viên</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="/employee?action=add" method="post">
             <div class="modal-body">
-                <div class="mb-3">
-                    <label class="form-label">Mã nhân viên</label>
-                    <input type="text" name="name" class="form-control width-form">
-                </div>
                 <div class="mb-3">
                     <label class="form-label">Họ Tên</label>
                     <input type="text" name="name" class="form-control width-form">
@@ -204,9 +201,10 @@
                     </select>
                 </div>
             </div>
+            </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-primary">Lưu</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
             </div>
         </div>
     </div>
