@@ -13,4 +13,9 @@ public class EmployeeService implements IEmployeeService {
     public List<Employee> showAll() {
         return employeeRepository.showAll();
     }
+
+    @Override
+    public boolean add(Employee employee) {
+        return employeeRepository.add(employee);
+    }
 }

@@ -17,6 +17,7 @@ import java.util.List;
 
 public class EmployeeRepository implements IEmployeeRepository {
     private final String SELECT_ALL = "select * from employee join `position` on employee.position_id = `position`.id join education_degree on employee.education_degree_id = education_degree.id join division on employee.division_id = division.id;";
+    private final String INSERT_EMPLOYEE = "insert into employee(`name`,date_of_birth,id_card,salary,phone_number,email,address,position_id,education_degree_id,division_id)value(?,?,?,?,?,?,?,?,?,?);";
     @Override
     public List<Employee> showAll() {
         Connection connection = BaseRepository.getConnectDB();
@@ -50,5 +51,27 @@ public class EmployeeRepository implements IEmployeeRepository {
         }
 
         return employeeList;
+    }
+
+    @Override
+    public boolean add(Employee employee) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement ps = connection.prepareStatement(INSERT_EMPLOYEE);
+            ps.setString(1, employee.getName());
+            ps.setString(2, String.valueOf(employee.getDateOfBirth()));
+            ps.setString(3, employee.getIdCard());
+            ps.setDouble(4, employee.getSalary());
+            ps.setString(5, employee.getPhone());
+            ps.setString(6, employee.getEmail());
+            ps.setString(7, employee.getAddress());
+            ps.setInt(8, employee.getPositionId());
+            ps.setInt(9, employee.getEducationDegreeId());
+            ps.setInt(10, employee.getDivisionId());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
     }
 }

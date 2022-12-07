@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IEmployeeRepository {
     List<Employee> showAll();
+
+    boolean add (Employee employee);
 }

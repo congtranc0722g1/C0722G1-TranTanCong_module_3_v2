@@ -77,7 +77,9 @@
             </form>
         </div>
     </div>
-
+    <c:if test="${mess != null}">
+        <p style="color: brown; margin-left: 23px">${mess}</p>
+    </c:if>
     <div class="row margin">
         <table class="table table-striped table-bordered" id="tableCustomer" style="width: 100%">
             <thead>
@@ -111,7 +113,7 @@
                     <td>${employee.getPosition().getName()}</td>
                     <td>${employee.getEducationDegree().getName()}</td>
                     <td>${employee.getDivision().getName()}</td>
-                    <td><button>Chỉnh Sửa</button></td>
+                    <a class="btn btn-primary" style="width: 100px" href="/employee?action=" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Chỉnh Sửa</a>
                     <td><button>Xóa</button></td>
                 </tr>
             </c:forEach>
@@ -179,33 +181,34 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Vị Trí</label> <br>
-                    <select>
-                        <option selected>Quản Lý</option>
-                        <option selected>Nhân Viên</option>
+                    <select name="position">
+                        <c:forEach var="position" items="${positionList}">
+                            <option value="${position.getId()}">${position.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Trình Độ</label> <br>
-                    <select>
-                        <option>Trung Cấp</option>
-                        <option>Cao Đẳng</option>
-                        <option>Đại Học</option>
-                        <option>Sau Đại Học</option>
+                    <select name="education-degree">
+                        <c:forEach var="educationDegree" items="${educationDegreeList}">
+                            <option value="${educationDegree.getId()}">${educationDegree.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Bộ Phận</label> <br>
-                    <select>
-                        <option selected>Quản Lý</option>
-                        <option selected>Nhân Viên</option>
+                    <select name="division">
+                        <c:forEach var="division" items="${divisionList}">
+                            <option value="${division.getId()}">${division.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>
-            </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                 <button type="submit" class="btn btn-primary">Lưu</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -249,25 +252,26 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Vị Trí</label> <br>
-                    <select>
-                        <option selected>Quản Lý</option>
-                        <option selected>Nhân Viên</option>
+                    <select name="position">
+                        <c:forEach var="position" items="${positionList}">
+                            <option value="${position.getId()}">${position.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Trình Độ</label> <br>
-                    <select>
-                        <option>Trung Cấp</option>
-                        <option>Cao Đẳng</option>
-                        <option>Đại Học</option>
-                        <option>Sau Đại Học</option>
+                    <select name="education-degree">
+                        <c:forEach var="educationDegree" items="${educationDegreeList}">
+                            <option value="${educationDegree.getId()}">${educationDegree.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Bộ Phận</label> <br>
-                    <select>
-                        <option selected>Quản Lý</option>
-                        <option selected>Nhân Viên</option>
+                    <select name="division">
+                        <c:forEach var="division" items="${divisionList}">
+                            <option value="${division.getId()}">${division.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>
