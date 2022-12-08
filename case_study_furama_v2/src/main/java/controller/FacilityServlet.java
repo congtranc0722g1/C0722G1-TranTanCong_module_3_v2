@@ -47,23 +47,23 @@ public class FacilityServlet extends HttpServlet {
     private void delete(HttpServletRequest request, HttpServletResponse response) {
         Integer id = Integer.valueOf(request.getParameter("id"));
         boolean check = facilityService.delete(id);
-        String mess = "Xóa không thành công";
+        String mess = "Xoa khong thanh cong";
         if (check) {
-            mess = "Xóa thành công";
+            mess = "Xoa thanh cong";
         }
-        request.setAttribute("mess", mess);
-        try {
-            request.getRequestDispatcher("view/facility/list.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        request.setAttribute("mess", mess);
 //        try {
-//            response.sendRedirect("/facility?mess=" + mess);
+//            request.getRequestDispatcher("view/facility/list.jsp").forward(request, response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+        try {
+            response.sendRedirect("/facility?mess=" + mess);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response) {
@@ -91,9 +91,9 @@ public class FacilityServlet extends HttpServlet {
         String facilityFree = request.getParameter("facility_free");
         Facility facility = new Facility(id, name, area, cost, maxPeople, rentTypeId, facilityTypeId, standardRoom, descriptionOtherConvenience, poolArea, numbersOfFloors, facilityFree);
         boolean check = facilityService.update(facility);
-        String mess = " Chỉnh sửa không thành công";
+        String mess = " Chinh sua khong thanh cong";
         if (check) {
-            mess = "Chỉnh sửa thành công";
+            mess = "Chinh sua thanh cong";
         }
         request.setAttribute("mess", mess);
         List<RentType> rentTypeList = rentTypeService.findAll();
@@ -102,10 +102,15 @@ public class FacilityServlet extends HttpServlet {
         request.setAttribute("facilityTypeList", facilityTypeList);
         Facility facility1 = facilityService.findById(id);
         request.setAttribute("facility", facility1);
+//        try {
+//            request.getRequestDispatcher("view/facility/edit.jsp").forward(request, response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         try {
-            request.getRequestDispatcher("view/facility/edit.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
+            response.sendRedirect("/facility?mess=" + mess);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -136,19 +141,25 @@ public class FacilityServlet extends HttpServlet {
         String facilityFree = request.getParameter("facility_free");
         Facility facility = new Facility(id, name, area, cost, maxPeople, rentTypeId, facilityTypeId, standardRoom, descriptionOtherConvenience, poolArea, numbersOfFloors, facilityFree);
         boolean check = facilityService.add(facility);
-        String mess = "Thêm mới không thành công";
+        String mess = "Them moi khong thanh cong";
         if (check) {
-            mess = "Thêm mới thành công";
+            mess = "Them moi thanh cong";
         }
-        request.setAttribute("mess", mess);
+//        request.setAttribute("mess", mess);
         List<RentType> rentTypeList = rentTypeService.findAll();
         request.setAttribute("rentTypeList", rentTypeList);
         List<FacilityType> facilityTypeList = facilityTypeService.findAll();
         request.setAttribute("facilityTypeList", facilityTypeList);
+//        try {
+//            request.getRequestDispatcher("view/facility/create.jsp").forward(request, response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
         try {
-            request.getRequestDispatcher("view/facility/create.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
+            response.sendRedirect("/facility?mess=" + mess);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -224,6 +235,8 @@ public class FacilityServlet extends HttpServlet {
     private void showListFacility(HttpServletRequest request, HttpServletResponse response) {
         List<Facility> facilityList = facilityService.findAll();
         request.setAttribute("facilityList", facilityList);
+        String mess = request.getParameter("mess");
+        request.setAttribute("mess",mess);
         try {
             request.getRequestDispatcher("view/facility/list.jsp").forward(request, response);
         } catch (ServletException e) {

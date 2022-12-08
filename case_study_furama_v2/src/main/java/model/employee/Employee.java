@@ -21,6 +21,20 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(int id, String name, LocalDate dateOfBirth, String idCard, double salary, String phone, String email, String address, int positionId, int educationDegreeId, int divisionId) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.idCard = idCard;
+        this.salary = salary;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.positionId = positionId;
+        this.educationDegreeId = educationDegreeId;
+        this.divisionId = divisionId;
+    }
+
     public Employee(String name, LocalDate dateOfBirth, String idCard, double salary, String phone, String email, String address, int positionId, int educationDegreeId, int divisionId) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;

@@ -47,29 +47,31 @@
     </div>
     <div class="row main">
         <div class="col-lg-2">
-            <a href="list.html">
+            <a href="/employee">
                 <button class="btn btn-warning btn-outline-danger">Làm mới trang</button>
             </a>
         </div>
 
-        <div class="col-lg-3">
-            <a href="../main_furama/furama.html">
+        <div class="col-lg-2">
+            <a href="../../index.jsp">
                 <button class="btn btn-warning btn-outline-danger">Quay lại trang chủ</button>
             </a>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <a href="#">
                 <button class="btn btn-warning btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Thêm mới nhân viên</button>
             </a>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <form class="d-flex">
-                <input class="form-control me-2 justify-content-between" type="text" placeholder="Nhập tên"
+                <input value="${name}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập tên"
                        aria-label="Search" style="width: 150px" name="name">
-                <input class="form-control me-2 justify-content-between" type="text" placeholder="Nhập địa chỉ"
+                <input value="${address}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập địa chỉ"
                        aria-label="Search" style="width: 150px" name="address">
+                <input value="${divisionName}" class="form-control me-2 justify-content-between" type="text" placeholder="Nhập bộ phận"
+                       aria-label="Search" style="width: 150px" name="division">
                 <input type="hidden" name="action" value="search">
                 <button class="btn btn-success btn-outline-warning" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -113,8 +115,18 @@
                     <td>${employee.getPosition().getName()}</td>
                     <td>${employee.getEducationDegree().getName()}</td>
                     <td>${employee.getDivision().getName()}</td>
-                    <a class="btn btn-primary" style="width: 100px" href="/employee?action=" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Chỉnh Sửa</a>
-                    <td><button>Xóa</button></td>
+                    <td>
+                        <button onclick="infoEdit('${employee.getId()}', '${employee.getName()}', '${employee.getDateOfBirth()}', '${employee.getIdCard()}', '${employee.getSalary()}', '${employee.getPhone()}', '${employee.getEmail()}', '${employee.getAddress()}', '${employee.getPositionId()}', '${employee.getEducationDegreeId()}', '${employee.getDivisionId()}')" type="button"
+                                class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Chỉnh sửa
+                        </button>
+                    </td>
+                    <td>
+                        <button onclick="infoDelete('${employee.getId()}', '${employee.getName()}')" type="button"
+                                class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Xóa
+                        </button>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -130,13 +142,16 @@
                 <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="/employee?action=delete" method="post">
             <div class="modal-body">
-                Bạn có muốn xóa
+                <input type="text" hidden id="deleteId" name="id">
+                <span>Bạn có muốn xóa khách hàng</span> <span style="color: red" id="deleteName"></span> <span>không ?</span>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-primary">Xóa</button>
+                <button type="submit" class="btn btn-primary">Xóa</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -182,9 +197,7 @@
                 <div class="mb-3">
                     <label class="form-label">Vị Trí</label> <br>
                     <select name="position">
-                        <c:forEach var="position" items="${positionList}">
-                            <option value="${position.getId()}">${position.getName()}</option>
-                        </c:forEach>
+                            <option value="1">Quản Lý</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -199,7 +212,7 @@
                     <label class="form-label">Bộ Phận</label> <br>
                     <select name="division">
                         <c:forEach var="division" items="${divisionList}">
-                            <option value="${division.getId()}">${division.getName()}</option>
+                            <option id="" value="${division.getId()}">${division.getName()}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -221,38 +234,40 @@
                 <h5 class="modal-title" id="exampleModalLabel2">Chỉnh Sửa nhân viên</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="/employee?action=edit" method="post">
             <div class="modal-body">
+                <input type="text" hidden id="editId" name="id">
                 <div class="mb-3">
                     <label class="form-label">Họ Tên</label>
-                    <input type="text" name="name" class="form-control width-form">
+                    <input  type="text" name="name" id="name" class="form-control width-form">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Ngày Sinh</label>
-                    <input type="date" name="birthday" class="form-control width-form">
+                    <input type="date" name="birthday" id="day-of-birth" class="form-control width-form">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Số CMND</label>
-                    <input type="text" name="id-card" class="form-control width-form">
+                    <input type="text" name="id-card" id="id-card" class="form-control width-form">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Lương</label>
-                    <input type="text" name="salary" class="form-control width-form">
+                    <input type="text" name="salary" id="salary" class="form-control width-form">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Số Điện Thoại</label>
-                    <input type="text" name="phone-number" class="form-control width-form">
+                    <input type="text" name="phone-number" id="phone" class="form-control width-form">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="text" name="email" class="form-control width-form">
+                    <input type="text" name="email" id="email" class="form-control width-form">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Địa chỉ</label>
-                    <input type="text" name="address" class="form-control width-form">
+                    <input type="text" name="address" id="address" class="form-control width-form">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Vị Trí</label> <br>
-                    <select name="position">
+                    <select name="position" id="position-id">
                         <c:forEach var="position" items="${positionList}">
                             <option value="${position.getId()}">${position.getName()}</option>
                         </c:forEach>
@@ -260,7 +275,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Trình Độ</label> <br>
-                    <select name="education-degree">
+                    <select name="education-degree" id="education-degree-id">
                         <c:forEach var="educationDegree" items="${educationDegreeList}">
                             <option value="${educationDegree.getId()}">${educationDegree.getName()}</option>
                         </c:forEach>
@@ -268,7 +283,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Bộ Phận</label> <br>
-                    <select name="division">
+                    <select name="division" id="division-id">
                         <c:forEach var="division" items="${divisionList}">
                             <option value="${division.getId()}">${division.getName()}</option>
                         </c:forEach>
@@ -277,8 +292,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-primary">Cập Nhật</button>
+                <button type="submit" class="btn btn-primary">Cập Nhật</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -286,6 +302,26 @@
 <div class="row text-lg-center fs-4 btn-secondary">
     <p>©2022 Furama Resort Danang</p>
 </div>
+<script>
+    function infoEdit(id, name, dateOfBirth, idCard, salary, phone, email, address, positionId, educationDegreeId, divisionId) {
+        document.getElementById("editId").value = id;
+        document.getElementById("name").value = name;
+        document.getElementById("day-of-birth").value = dateOfBirth;
+        document.getElementById("id-card").value = idCard;
+        document.getElementById("salary").value = salary;
+        document.getElementById("phone").value = phone;
+        document.getElementById("email").value = email;
+        document.getElementById("address").value = address;
+        document.getElementById("position-id").value = positionId;
+        document.getElementById("education-degree-id").value = educationDegreeId;
+        document.getElementById("division-id").value = divisionId;
+    }
+
+    function infoDelete(id, name) {
+        document.getElementById("deleteId").value = id;
+        document.getElementById("deleteName").innerText = name;
+    }
+</script>
 <script src="../../bootstrap-5.1.3-dist/js/bootstrap.js"></script>
 </body>
 </html>

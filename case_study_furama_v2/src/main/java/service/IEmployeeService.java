@@ -8,4 +8,10 @@ public interface IEmployeeService {
     List<Employee> showAll();
 
     boolean add (Employee employee);
+
+    boolean delete(int id);
+
+    List<Employee> search(String nameSearch, String addressSearch, String divisionNameSearch);
+
+    boolean edit(Employee employee);
 }

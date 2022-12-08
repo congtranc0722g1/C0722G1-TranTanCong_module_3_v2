@@ -85,6 +85,11 @@
             </form>
         </div>
     </div>
+<%--    <div id="alomm"></div>--%>
+<%--    <script>--%>
+<%--        const facility = window.location.search;--%>
+<%--        document.getElementById("alomm").innerText = facility;--%>
+<%--    </script>--%>
     <c:if test="${mess != null}">
         <p style="color: brown; margin-left: 23px">${mess}</p>
     </c:if>
