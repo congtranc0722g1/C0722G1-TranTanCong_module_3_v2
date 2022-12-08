@@ -4,6 +4,8 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../bootstrap520/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../datatables/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="../../css/employee_case.css">
 </head>
 <body>
@@ -323,5 +325,16 @@
     }
 </script>
 <script src="../../bootstrap-5.1.3-dist/js/bootstrap.js"></script>
+<script src="../../jquery/jquery-3.5.1.min.js"></script>
+<script src="../../datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>$(document).ready(function () {
+    $('#tableCustomer').dataTable({
+        "dom": 'lrtip',
+        "lengthChange": false,
+        "pageLength": 5
+    });
+});
+</script>
 </body>
 </html>
