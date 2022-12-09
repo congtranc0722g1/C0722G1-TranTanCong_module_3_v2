@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>List Employe</title>
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../../bootstrap520/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../datatables/css/dataTables.bootstrap5.min.css">
@@ -81,9 +81,10 @@
             </form>
         </div>
     </div>
-    <c:if test="${mess != null}">
-        <p style="color: brown; margin-left: 23px">${mess}</p>
-    </c:if>
+<%--    <c:if test="${mess != null}">--%>
+<%--        <p style="color: brown; margin-left: 23px">${mess}</p>--%>
+<%--    </c:if>--%>
+    <p id="mess" style="color: brown; margin-left: 23px">${mess}</p>
     <div class="row margin">
         <table class="table table-striped table-bordered" id="tableCustomer" style="width: 100%">
             <thead>
@@ -118,8 +119,8 @@
                     <td>${employee.getEducationDegree().getName()}</td>
                     <td>${employee.getDivision().getName()}</td>
                     <td>
-                        <button onclick="infoEdit('${employee.getId()}', '${employee.getName()}', '${employee.getDateOfBirth()}', '${employee.getIdCard()}', '${employee.getSalary()}', '${employee.getPhone()}', '${employee.getEmail()}', '${employee.getAddress()}', '${employee.getPositionId()}', '${employee.getEducationDegreeId()}', '${employee.getDivisionId()}')" type="button"
-                                class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        <button onclick="infoEdit('${employee.getId()}', '${employee.getName()}', '${employee.getDateOfBirth()}', '${employee.getIdCard()}', '${employee.getSalary()}', '${employee.getPhone()}', '${employee.getEmail()}', '${employee.getAddress()}', '${employee.position.id}', '${employee.educationDegree.id}', '${employee.division.id}')" type="button"
+                                class="btn btn-primary" style="width: 100px" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                             Chỉnh sửa
                         </button>
                     </td>
@@ -170,36 +171,38 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label class="form-label">Họ Tên</label>
-                    <input type="text" name="name" class="form-control width-form">
+                    <input type="text" name="name" class="form-control width-form" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Ngày Sinh</label>
-                    <input type="date" name="birthday" class="form-control width-form">
+                    <input type="date" name="birthday" class="form-control width-form" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Số CMND</label>
-                    <input type="text" name="id-card" class="form-control width-form">
+                    <input type="text" name="id-card" class="form-control width-form" required pattern="[0-9]{12}" title="Số cmnd phải là 12 số">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Lương</label>
-                    <input type="text" name="salary" class="form-control width-form">
+                    <input type="text" name="salary" class="form-control width-form" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Số Điện Thoại</label>
-                    <input type="text" name="phone-number" class="form-control width-form">
+                    <input type="text" name="phone-number" class="form-control width-form" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="text" name="email" class="form-control width-form">
+                    <input type="text" name="email" class="form-control width-form" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Địa chỉ</label>
-                    <input type="text" name="address" class="form-control width-form">
+                    <input type="text" name="address" class="form-control width-form" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Vị Trí</label> <br>
                     <select name="position">
-                            <option value="1">Quản Lý</option>
+                        <c:forEach var="position" items="${positionList}">
+                            <option value="${position.getId()}">${position.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -269,7 +272,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Vị Trí</label> <br>
-                    <select name="position" id="position-id">
+                    <select name="position" id="position-id-edit">
                         <c:forEach var="position" items="${positionList}">
                             <option value="${position.getId()}">${position.getName()}</option>
                         </c:forEach>
@@ -277,7 +280,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Trình Độ</label> <br>
-                    <select name="education-degree" id="education-degree-id">
+                    <select name="education-degree" id="education-degree-id-edit">
                         <c:forEach var="educationDegree" items="${educationDegreeList}">
                             <option value="${educationDegree.getId()}">${educationDegree.getName()}</option>
                         </c:forEach>
@@ -285,7 +288,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Bộ Phận</label> <br>
-                    <select name="division" id="division-id">
+                    <select name="division" id="division-id-edit">
                         <c:forEach var="division" items="${divisionList}">
                             <option value="${division.getId()}">${division.getName()}</option>
                         </c:forEach>
@@ -314,9 +317,11 @@
         document.getElementById("phone").value = phone;
         document.getElementById("email").value = email;
         document.getElementById("address").value = address;
-        document.getElementById("position-id").value = positionId;
-        document.getElementById("education-degree-id").value = educationDegreeId;
-        document.getElementById("division-id").value = divisionId;
+        document.getElementById("position-id-edit").value = positionId;
+        document.getElementById("education-degree-id-edit").value = educationDegreeId;
+        document.getElementById("division-id-edit").value = divisionId;
+
+
     }
 
     function infoDelete(id, name) {
@@ -335,6 +340,9 @@
         "pageLength": 5
     });
 });
+</script>
+<script>
+    setTimeout(function(){ close(document.getElementById("mess").style.display= "none") }, 3000);
 </script>
 </body>
 </html>

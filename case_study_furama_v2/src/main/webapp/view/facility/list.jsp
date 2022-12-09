@@ -90,9 +90,12 @@
 <%--        const facility = window.location.search;--%>
 <%--        document.getElementById("alomm").innerText = facility;--%>
 <%--    </script>--%>
+
+
     <c:if test="${mess != null}">
-        <p style="color: brown; margin-left: 23px">${mess}</p>
+        <p id="mess" style="color: brown; margin-left: 23px">${mess}</p>
     </c:if>
+
     <div class="row margin">
         <table class="table table-striped table-bordered" id="tableCustomer" style="width: 100%">
             <thead>
@@ -195,6 +198,9 @@
         "pageLength": 5
     });
 });
+</script>
+<script>
+    setTimeout(function(){ close(document.getElementById("mess").style.display= "none") }, 3000);
 </script>
 </body>
 </html>

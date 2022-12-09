@@ -104,7 +104,7 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" style="margin-top: 20px">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-warning" type="submit">Search</button>
         </form>

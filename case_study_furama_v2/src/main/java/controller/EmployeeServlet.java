@@ -146,6 +146,12 @@ public class EmployeeServlet extends HttpServlet {
         request.setAttribute("divisionName", divisionName);
         List<Employee> employeeList = employeeService.search(name, address, divisionName);
         request.setAttribute("employeeList", employeeList);
+        List<Position> positionList = positionService.showAll();
+        request.setAttribute("positionList", positionList);
+        List<EducationDegree> educationDegreeList = educationDegreeService.showAll();
+        request.setAttribute("educationDegreeList", educationDegreeList);
+        List<Division> divisionList = divisionService.showAll();
+        request.setAttribute("divisionList", divisionList);
         try {
             request.getRequestDispatcher("view/employee/list.jsp").forward(request,response);
         } catch (ServletException e) {

@@ -171,7 +171,7 @@ where id = p_id;
 end //
 delimiter ;
 
-select * from customer;
+select * from division;
 
 call update_customer(2, 1, "Trần Tấn ", "1999-10-20", 1, "909876546", "08888888888", "congtran@gmail.com", "Quảng Nam");
 
@@ -209,4 +209,9 @@ set `name`= p_name, area = p_area, cost = p_cost, max_people = p_max_people, ren
 where id = p_id;
 end //
 delimiter ;
+
+
+select * from employee;
+
+update employee set `name` = ?, date_of_birth = ?, id_card = ?, salary = ?, phone_number = ?, email = ?, address = ?,  position_id = ?, education_degree_id = ?, division_id = ? where id = ?;
 
